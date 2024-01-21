@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:disp_moveis/screens/perfil_screen.dart';
+import 'package:disp_moveis/screens/notificacoes_screen.dart';
 import '../components/favorite.dart';
 
 class FavoritosScreen extends StatefulWidget {
@@ -41,9 +42,16 @@ class _FavoritosScreenState extends State<FavoritosScreen> {
           color: Colors.blue,
           height: 70,
           child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FavoritosScreen(),
+                  ),
+                );
+              },
               icon: const Icon(
                 Icons.favorite,
                 color: Colors.white,
@@ -51,7 +59,14 @@ class _FavoritosScreenState extends State<FavoritosScreen> {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const NotificacoesScreen(),
+                  ),
+                );
+              },
               icon: const Icon(
                 Icons.notifications,
                 color: Colors.white,
@@ -59,7 +74,14 @@ class _FavoritosScreenState extends State<FavoritosScreen> {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PerfilScreen(),
+                  ),
+                );
+              },
               icon: const Icon(
                 Icons.settings,
                 color: Colors.white,

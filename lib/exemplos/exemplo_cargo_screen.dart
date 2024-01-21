@@ -1,23 +1,24 @@
-import 'package:disp_moveis/components/search.dart';
+import 'package:flutter/material.dart';
 import 'package:disp_moveis/screens/favoritos_screen.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
 import 'package:disp_moveis/screens/notificacoes_screen.dart';
-import 'package:flutter/material.dart';
+import '../data/tjse_dao.dart';
 
-class InitialScreen extends StatefulWidget {
-  const InitialScreen({super.key});
+class ExemploCargoScreen extends StatefulWidget {
+  const ExemploCargoScreen({super.key});
 
   @override
-  State<InitialScreen> createState() => _InitialScreenState();
+  State<ExemploCargoScreen> createState() => _ExemploCargoScreenState();
 }
 
-class _InitialScreenState extends State<InitialScreen> {
+class _ExemploCargoScreenState extends State<ExemploCargoScreen> {
+  String? dropdownValue;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(219, 238, 255, 1.0),
       appBar: AppBar(
-        leading: Container(),
         title: const Text(
           'TJSE - Folhas de Pagamento',
           style: TextStyle(
@@ -26,20 +27,51 @@ class _InitialScreenState extends State<InitialScreen> {
           ),
         ),
         backgroundColor: Colors.blue,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: ListView(children: const [
-        Search('Busca por nome do servidor', 'assets/images/nome.png',1),
-        Search('Busca por cargo', 'assets/images/cargo.png',2),
-        Search('Busca por lotação', 'assets/images/lotacao.png',3),
-        Search('Busca por mês e ano', 'assets/images/mes_ano.png',4),
-        Search('Busca por faixa salarial', 'assets/images/faixa_salarial.png',5),
-        Search('Busca avançada', 'assets/images/avancada.png',6),
-      ]),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: Colors.white,
+              ),
+              height: 60,
+              width: 380,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 15, top: 8, bottom: 8, right: 8),
+                child: DropdownButton(
+                    value: dropdownValue,
+                    icon: const Icon(Icons.keyboard_arrow_down_rounded),
+                    iconSize: 40,
+                    isExpanded: true,
+                    hint: const Text("Busca por cargo..."),
+                    underline: Container(),
+                    style: const TextStyle(fontSize: 20, color: Colors.black),
+                    items: TJSEDao.cargoList.map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (String? selectedValue) {
+                      setState(() {
+                        dropdownValue = selectedValue;
+                      });
+                    }),
+              ),
+            ),
+            Expanded(child: ListView(children: []))
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomAppBar(
           color: Colors.blue,
           height: 70,
           child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
             IconButton(
               onPressed: () {
                 Navigator.push(

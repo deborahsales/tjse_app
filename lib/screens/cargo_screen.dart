@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
-const List<String> list = <String>['Juiz', 'Desembargador', 'Auxiliar'];
+import 'package:disp_moveis/screens/favoritos_screen.dart';
+import 'package:disp_moveis/screens/perfil_screen.dart';
+import 'package:disp_moveis/screens/notificacoes_screen.dart';
+import '../data/tjse_dao.dart';
 
 class CargoScreen extends StatefulWidget {
   const CargoScreen({super.key});
@@ -48,7 +50,7 @@ class _CargoScreenState extends State<CargoScreen> {
                     hint: const Text("Busca por cargo..."),
                     underline: Container(),
                     style: const TextStyle(fontSize: 20, color: Colors.black),
-                    items: list.map((String value) {
+                    items: TJSEDao.cargoList.map((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(value),
@@ -69,9 +71,16 @@ class _CargoScreenState extends State<CargoScreen> {
           color: Colors.blue,
           height: 70,
           child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FavoritosScreen(),
+                  ),
+                );
+              },
               icon: const Icon(
                 Icons.favorite,
                 color: Colors.white,
@@ -79,7 +88,14 @@ class _CargoScreenState extends State<CargoScreen> {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const NotificacoesScreen(),
+                  ),
+                );
+              },
               icon: const Icon(
                 Icons.notifications,
                 color: Colors.white,
@@ -87,7 +103,14 @@ class _CargoScreenState extends State<CargoScreen> {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PerfilScreen(),
+                  ),
+                );
+              },
               icon: const Icon(
                 Icons.settings,
                 color: Colors.white,

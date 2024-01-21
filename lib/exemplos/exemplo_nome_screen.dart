@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:disp_moveis/screens/favoritos_screen.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
 import 'package:disp_moveis/screens/notificacoes_screen.dart';
-import '../data/tjse_dao.dart';
 
-
-class LotacaoScreen extends StatefulWidget {
-  const LotacaoScreen({super.key});
+class ExemploNomeScreen extends StatefulWidget {
+  const ExemploNomeScreen({super.key});
 
   @override
-  State<LotacaoScreen> createState() => _LotacaoScreenState();
+  State<ExemploNomeScreen> createState() => _ExemploNomeScreenState();
 }
 
-class _LotacaoScreenState extends State<LotacaoScreen> {
-  String? dropdownValue;
+class _ExemploNomeScreenState extends State<ExemploNomeScreen> {
+  TextEditingController nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,37 +32,44 @@ class _LotacaoScreenState extends State<LotacaoScreen> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: Colors.white,
-              ),
-              height: 60,
-              width: 380,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 15, top: 8, bottom: 8, right: 8),
-                child: DropdownButton(
-                    value: dropdownValue,
-                    icon: const Icon(Icons.keyboard_arrow_down_rounded),
-                    iconSize: 40,
-                    isExpanded: true,
-                    hint: const Text("Busca por lotação..."),
-                    underline: Container(),
-                    style: const TextStyle(fontSize: 20, color: Colors.black),
-                    items: TJSEDao.lotacaoList.map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    onChanged: (String? selectedValue) {
-                      setState(() {
-                        dropdownValue = selectedValue;
-                      });
-                    }),
-              ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.white,
+                  ),
+                  height: 60,
+                  width: 380,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 300,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: TextField(
+                              controller: nameController,
+                              style: const TextStyle(fontSize: 20),
+                              maxLines: 1,
+                              keyboardType: TextInputType.text,
+                              decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "Busca por nome...",
+                              ),
+                            ),
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.search, size: 40),
+                          color: Colors.black,
+                        )
+                      ])),
             ),
-            Expanded(child: ListView(children: []))
+            Expanded(
+                child: ListView(children: []))
           ],
         ),
       ),
