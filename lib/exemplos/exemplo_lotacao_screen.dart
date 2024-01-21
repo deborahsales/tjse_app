@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:disp_moveis/screens/favoritos_screen.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
 import 'package:disp_moveis/screens/notificacoes_screen.dart';
+import '../components/resultado.dart';
 import '../data/tjse_dao.dart';
 
 
@@ -64,7 +65,32 @@ class _ExemploLotacaoScreenState extends State<ExemploLotacaoScreen> {
                     }),
               ),
             ),
-            Expanded(child: ListView(children: []))
+            Expanded(child: ListView(children: const [
+              Resultado(
+                  'Janeiro',
+                  '2023',
+                  'Servidor XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+              Resultado(
+                  'Janeiro',
+                  '2023',
+                  'Servidor XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+              Resultado(
+                  'Janeiro',
+                  '2023',
+                  'Servidor XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+              Resultado(
+                  'Janeiro',
+                  '2023',
+                  'Servidor XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+              Resultado(
+                  'Janeiro',
+                  '2023',
+                  'Servidor XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX")]))
           ],
         ),
       ),

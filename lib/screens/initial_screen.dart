@@ -1,4 +1,4 @@
-import 'package:disp_moveis/components/search.dart';
+import 'package:disp_moveis/components/busca.dart';
 import 'package:disp_moveis/screens/favoritos_screen.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
 import 'package:disp_moveis/screens/notificacoes_screen.dart';
@@ -28,12 +28,12 @@ class _InitialScreenState extends State<InitialScreen> {
         backgroundColor: Colors.blue,
       ),
       body: ListView(children: const [
-        Search('Busca por nome do servidor', 'assets/images/nome.png',1),
-        Search('Busca por cargo', 'assets/images/cargo.png',2),
-        Search('Busca por lotação', 'assets/images/lotacao.png',3),
-        Search('Busca por mês e ano', 'assets/images/mes_ano.png',4),
-        Search('Busca por faixa salarial', 'assets/images/faixa_salarial.png',5),
-        Search('Busca avançada', 'assets/images/avancada.png',6),
+        Busca('Busca por nome do servidor', 'assets/images/nome.png',1),
+        Busca('Busca por cargo', 'assets/images/cargo.png',2),
+        Busca('Busca por lotação', 'assets/images/lotacao.png',3),
+        Busca('Busca por mês e ano', 'assets/images/mes_ano.png',4),
+        Busca('Busca por faixa salarial', 'assets/images/faixa_salarial.png',5),
+        Busca('Busca avançada', 'assets/images/avancada.png',6),
       ]),
       bottomNavigationBar: BottomAppBar(
           color: Colors.blue,

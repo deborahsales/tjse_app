@@ -1,17 +1,18 @@
+import 'package:disp_moveis/components/resultado.dart';
 import 'package:flutter/material.dart';
 import 'package:disp_moveis/screens/favoritos_screen.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
 import 'package:disp_moveis/screens/notificacoes_screen.dart';
 import '../data/tjse_dao.dart';
 
-class AvanScreen extends StatefulWidget {
-  const AvanScreen({super.key});
+class ExemploAvanScreen extends StatefulWidget {
+  const ExemploAvanScreen({super.key});
 
   @override
-  State<AvanScreen> createState() => _AvanScreenState();
+  State<ExemploAvanScreen> createState() => _ExemploAvanScreenState();
 }
 
-class _AvanScreenState extends State<AvanScreen> {
+class _ExemploAvanScreenState extends State<ExemploAvanScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController faixaInicialController = TextEditingController();
   TextEditingController faixaFinalController = TextEditingController();
@@ -272,7 +273,33 @@ class _AvanScreenState extends State<AvanScreen> {
               ],
             ),
             Expanded(
-                child: ListView(children: []))
+                child: ListView(children: const [
+                  Resultado(
+                      'Janeiro',
+                      '2023',
+                      'Servidor XXX\nLotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                      "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+                  Resultado(
+                      'Janeiro',
+                      '2023',
+                      'Servidor XXX\nLotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                      "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+                  Resultado(
+                      'Janeiro',
+                      '2023',
+                      'Servidor XXX\nLotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                      "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+                  Resultado(
+                      'Janeiro',
+                      '2023',
+                      'Servidor XXX\nLotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                      "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+                  Resultado(
+                      'Janeiro',
+                      '2023',
+                      'Servidor XXX\nLotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                      "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX")
+                ]))
           ],
         ),
       ),

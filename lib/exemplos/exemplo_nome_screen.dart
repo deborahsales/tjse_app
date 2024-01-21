@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:disp_moveis/screens/favoritos_screen.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
 import 'package:disp_moveis/screens/notificacoes_screen.dart';
+import '../components/resultado.dart';
 
 class ExemploNomeScreen extends StatefulWidget {
   const ExemploNomeScreen({super.key});
@@ -69,7 +70,33 @@ class _ExemploNomeScreenState extends State<ExemploNomeScreen> {
                       ])),
             ),
             Expanded(
-                child: ListView(children: []))
+                child: ListView(children: const [
+              Resultado(
+                  'Janeiro',
+                  '2023',
+                  'Lotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+              Resultado(
+                  'Janeiro',
+                  '2023',
+                  'Lotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+              Resultado(
+                  'Janeiro',
+                  '2023',
+                  'Lotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+              Resultado(
+                  'Janeiro',
+                  '2023',
+                  'Lotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+              Resultado(
+                  'Janeiro',
+                  '2023',
+                  'Lotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX")
+            ]))
           ],
         ),
       ),
@@ -77,7 +104,7 @@ class _ExemploNomeScreenState extends State<ExemploNomeScreen> {
           color: Colors.blue,
           height: 70,
           child:
-          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
             IconButton(
               onPressed: () {
                 Navigator.push(

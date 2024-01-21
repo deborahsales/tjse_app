@@ -1,4 +1,3 @@
-import 'package:disp_moveis/screens/initial_screen.dart';
 import 'package:disp_moveis/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 

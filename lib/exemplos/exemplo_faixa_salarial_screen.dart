@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:disp_moveis/screens/favoritos_screen.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
 import 'package:disp_moveis/screens/notificacoes_screen.dart';
+import '../components/resultado.dart';
 
-class FaixaSalarialScreen extends StatefulWidget {
-  const FaixaSalarialScreen({super.key});
+class ExemploFaixaSalarialScreen extends StatefulWidget {
+  const ExemploFaixaSalarialScreen({super.key});
 
   @override
-  State<FaixaSalarialScreen> createState() => _FaixaSalarialScreenState();
+  State<ExemploFaixaSalarialScreen> createState() => _ExemploFaixaSalarialScreenState();
 }
 
-class _FaixaSalarialScreenState extends State<FaixaSalarialScreen> {
+class _ExemploFaixaSalarialScreenState extends State<ExemploFaixaSalarialScreen> {
   TextEditingController faixaInicialController = TextEditingController();
   TextEditingController faixaFinalController = TextEditingController();
 
@@ -85,7 +86,7 @@ class _FaixaSalarialScreenState extends State<FaixaSalarialScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white,
                     ),
@@ -101,7 +102,33 @@ class _FaixaSalarialScreenState extends State<FaixaSalarialScreen> {
               ],
             ),
             Expanded(
-                child: ListView(children: []))
+                child: ListView(children: const [
+                  Resultado(
+                      'Janeiro',
+                      '2023',
+                      'Servidor XXX\nLotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                      "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+                  Resultado(
+                      'Janeiro',
+                      '2023',
+                      'Servidor XXX\nLotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                      "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+                  Resultado(
+                      'Janeiro',
+                      '2023',
+                      'Servidor XXX\nLotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                      "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+                  Resultado(
+                      'Janeiro',
+                      '2023',
+                      'Servidor XXX\nLotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                      "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+                  Resultado(
+                      'Janeiro',
+                      '2023',
+                      'Servidor XXX\nLotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                      "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX")
+                ]))
           ],
         ),
       ),

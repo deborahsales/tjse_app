@@ -1,3 +1,4 @@
+import 'package:disp_moveis/exemplos/exemplo_nome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:disp_moveis/screens/favoritos_screen.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
@@ -62,14 +63,21 @@ class _NomeScreenState extends State<NomeScreen> {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ExemploNomeScreen(),
+                              ),
+                            );
+                          },
                           icon: const Icon(Icons.search, size: 40),
                           color: Colors.black,
                         )
                       ])),
             ),
             Expanded(
-                child: ListView(children: []))
+                child: ListView(children: const []))
           ],
         ),
       ),
@@ -77,7 +85,7 @@ class _NomeScreenState extends State<NomeScreen> {
           color: Colors.blue,
           height: 70,
           child:
-          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
             IconButton(
               onPressed: () {
                 Navigator.push(

@@ -1,3 +1,4 @@
+import 'package:disp_moveis/exemplos/exemplo_faixa_salarial_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:disp_moveis/screens/favoritos_screen.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
@@ -85,14 +86,21 @@ class _FaixaSalarialScreenState extends State<FaixaSalarialScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white,
                     ),
                     height: 60,
                     width: 60,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ExemploFaixaSalarialScreen(),
+                          ),
+                        );
+                      },
                       icon: const Icon(Icons.search, size: 40),
                       color: Colors.black,
                     ),

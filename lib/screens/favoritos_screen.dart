@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
 import 'package:disp_moveis/screens/notificacoes_screen.dart';
-import '../components/favorite.dart';
+import '../components/favorito.dart';
 
 class FavoritosScreen extends StatefulWidget {
   const FavoritosScreen({super.key});
@@ -27,13 +27,13 @@ class _FavoritosScreenState extends State<FavoritosScreen> {
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: ListView(children: [
-        Favorite(nome: "Joe Doe"),
-        Favorite(cargo: "Juiz"),
-        Favorite(
+        Favorito(nome: "Joe Doe"),
+        Favorito(cargo: "Juiz"),
+        Favorito(
           salarioFinal: 1000,
           salarioInicial: 900,
         ),
-        Favorite(
+        Favorito(
           mes: "Janeiro",
           ano: "2023"
         )

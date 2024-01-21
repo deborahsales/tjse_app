@@ -7,18 +7,18 @@ import '../screens/lotacao_screen.dart';
 import '../screens/mes_ano_screen.dart';
 import '../screens/nome_screen.dart';
 
-class Search extends StatefulWidget {
+class Busca extends StatefulWidget {
   final String nome;
   final String icone;
   final int rota;
 
-  const Search(this.nome, this.icone, this.rota, {super.key});
+  const Busca(this.nome, this.icone, this.rota, {super.key});
 
   @override
-  State<Search> createState() => _SearchState();
+  State<Busca> createState() => _BuscaState();
 }
 
-class _SearchState extends State<Search> {
+class _BuscaState extends State<Busca> {
   @override
   Widget build(BuildContext context) {
     return Padding(

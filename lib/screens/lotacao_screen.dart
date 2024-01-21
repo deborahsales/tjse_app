@@ -1,3 +1,4 @@
+import 'package:disp_moveis/exemplos/exemplo_lotacao_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:disp_moveis/screens/favoritos_screen.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
@@ -60,6 +61,14 @@ class _LotacaoScreenState extends State<LotacaoScreen> {
                     onChanged: (String? selectedValue) {
                       setState(() {
                         dropdownValue = selectedValue;
+                        {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ExemploLotacaoScreen(),
+                            ),
+                          );
+                        }
                       });
                     }),
               ),

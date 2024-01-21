@@ -1,3 +1,4 @@
+import 'package:disp_moveis/exemplos/exemplo_cargo_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:disp_moveis/screens/favoritos_screen.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
@@ -59,6 +60,14 @@ class _CargoScreenState extends State<CargoScreen> {
                     onChanged: (String? selectedValue) {
                       setState(() {
                         dropdownValue = selectedValue;
+                        {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ExemploCargoScreen(),
+                            ),
+                          );
+                        }
                       });
                     }),
               ),

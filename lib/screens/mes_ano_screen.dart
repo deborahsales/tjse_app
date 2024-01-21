@@ -1,3 +1,4 @@
+import 'package:disp_moveis/exemplos/exemplo_mes_ano_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:disp_moveis/screens/favoritos_screen.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
@@ -100,6 +101,14 @@ class _MesAnoScreenState extends State<MesAnoScreen> {
                           onChanged: (String? selectedValue) {
                             setState(() {
                               anoDropdownValue = selectedValue;
+                              {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const ExemploMesAnoScreen(),
+                                  ),
+                                );
+                              }
                             });
                           }),
                     ),

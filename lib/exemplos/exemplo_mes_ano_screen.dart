@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:disp_moveis/screens/favoritos_screen.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
 import 'package:disp_moveis/screens/notificacoes_screen.dart';
-
+import '../components/resultado.dart';
 import '../data/tjse_dao.dart';
 
 class ExemploMesAnoScreen extends StatefulWidget {
@@ -107,7 +107,33 @@ class _ExemploMesAnoScreenState extends State<ExemploMesAnoScreen> {
                 ),
               ],
             ),
-            Expanded(child: ListView(children: []))
+            Expanded(child: ListView(children: const [
+              Resultado(
+                  'Servidor',
+                  'XXXX',
+                  'Lotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+              Resultado(
+                  'Servidor',
+                  'XXXX',
+                  'Lotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+              Resultado(
+                  'Servidor',
+                  'XXXX',
+                  'Lotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+              Resultado(
+                  'Servidor',
+                  'XXXX',
+                  'Lotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX"),
+              Resultado(
+                  'Servidor',
+                  'XXXX',
+                  'Lotação XXX\nCargo XXX\nR\$ XX.XXXX,XX',
+                  "XXXXXX\nXXXXXX\nXXXXXX\nXXXXXX")
+            ]))
           ],
         ),
       ),

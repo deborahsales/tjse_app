@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Favorite extends StatefulWidget {
+class Favorito extends StatefulWidget {
   String? nome;
   String? cargo;
   String? lotacao;
@@ -9,7 +9,7 @@ class Favorite extends StatefulWidget {
   double? salarioInicial;
   double? salarioFinal;
 
-  Favorite(
+  Favorito(
       {this.nome,
       this.cargo,
       this.lotacao,
@@ -20,10 +20,10 @@ class Favorite extends StatefulWidget {
       super.key});
 
   @override
-  State<Favorite> createState() => _FavoriteState();
+  State<Favorito> createState() => _FavoritoState();
 }
 
-class _FavoriteState extends State<Favorite> {
+class _FavoritoState extends State<Favorito> {
   bool stringValidator(String? value) {
     if (value != null) {
       return true;
