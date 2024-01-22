@@ -1,4 +1,4 @@
-# disp_moveis
+# Folhas de Pagamento TJSE
 
-Folhas de Pagamento TJSE.
+Aplicação móvel para realizar consultas de dados de folhas de pagamentos disponibilizados pelo TJSE no portal da transparência.
 
