@@ -65,7 +65,7 @@ class _ExemploLotacaoScreenState extends State<ExemploLotacaoScreen> {
                     }),
               ),
             ),
-            Expanded(child: ListView(children: const [
+            Expanded(child: ListView(children: [
               Resultado(
                   'Janeiro',
                   '2023',

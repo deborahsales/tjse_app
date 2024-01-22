@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Perfil extends StatefulWidget {
+class Perfil extends StatelessWidget {
   final String nome;
 
   const Perfil(this.nome, {super.key});
 
-  @override
-  State<Perfil> createState() => _PerfilState();
-}
-
-class _PerfilState extends State<Perfil> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,7 +27,7 @@ class _PerfilState extends State<Perfil> {
                   ),
                   Expanded(
                     child: Text(
-                      widget.nome,
+                      nome,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 22,

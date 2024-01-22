@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Notificacoes extends StatefulWidget {
+class Notificacoes extends StatelessWidget {
   final String mensagem;
 
   const Notificacoes(this.mensagem, {super.key});
 
-  @override
-  State<Notificacoes> createState() => _NotificacoesState();
-}
-
-class _NotificacoesState extends State<Notificacoes> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,7 +26,7 @@ class _NotificacoesState extends State<Notificacoes> {
                     height: 100,
                   ),
                   Expanded(
-                    child: Text( widget.mensagem,
+                    child: Text( mensagem,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 22,

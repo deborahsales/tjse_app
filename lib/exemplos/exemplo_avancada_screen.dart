@@ -257,7 +257,7 @@ class _ExemploAvanScreenState extends State<ExemploAvanScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white,
                     ),
@@ -273,7 +273,7 @@ class _ExemploAvanScreenState extends State<ExemploAvanScreen> {
               ],
             ),
             Expanded(
-                child: ListView(children: const [
+                child: ListView(children: [
                   Resultado(
                       'Janeiro',
                       '2023',

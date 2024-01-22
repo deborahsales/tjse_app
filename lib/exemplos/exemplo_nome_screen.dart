@@ -70,7 +70,7 @@ class _ExemploNomeScreenState extends State<ExemploNomeScreen> {
                       ])),
             ),
             Expanded(
-                child: ListView(children: const [
+                child: ListView(children: [
               Resultado(
                   'Janeiro',
                   '2023',

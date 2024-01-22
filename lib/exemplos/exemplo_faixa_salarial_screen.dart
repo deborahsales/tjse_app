@@ -102,7 +102,7 @@ class _ExemploFaixaSalarialScreenState extends State<ExemploFaixaSalarialScreen>
               ],
             ),
             Expanded(
-                child: ListView(children: const [
+                child: ListView(children: [
                   Resultado(
                       'Janeiro',
                       '2023',

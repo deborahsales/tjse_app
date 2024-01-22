@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Resultado extends StatefulWidget {
+class Resultado extends StatelessWidget {
   final String tituloUm;
   final String tituloDois;
   final String dados;
   final String dadosExpandidos;
 
-  const Resultado(this.tituloUm, this.tituloDois, this.dados, this.dadosExpandidos,
+  Resultado(this.tituloUm, this.tituloDois, this.dados, this.dadosExpandidos,
       {super.key});
 
-  @override
-  State<Resultado> createState() => _ResultadoState();
-}
-
-class _ResultadoState extends State<Resultado> {
   bool expandedValidator = false;
 
   @override
@@ -34,7 +29,7 @@ class _ResultadoState extends State<Resultado> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "${widget.tituloUm} ${widget.tituloDois}",
+                    "$tituloUm $tituloDois",
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 28,
@@ -54,7 +49,7 @@ class _ResultadoState extends State<Resultado> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    widget.dados,
+                    dados,
                     style: const TextStyle(
                         fontSize: 28, fontWeight: FontWeight.bold),
                   ),
@@ -69,7 +64,7 @@ class _ResultadoState extends State<Resultado> {
                 ),
               ),
               children: <Widget>[
-                Text(widget.dadosExpandidos,
+                Text(dadosExpandidos,
                     style: const TextStyle(
                         fontSize: 28, fontWeight: FontWeight.bold))
               ],

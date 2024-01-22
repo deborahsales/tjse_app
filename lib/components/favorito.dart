@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Favorito extends StatefulWidget {
+class Favorito extends StatelessWidget {
   String? nome;
   String? cargo;
   String? lotacao;
@@ -19,11 +19,6 @@ class Favorito extends StatefulWidget {
       this.salarioFinal,
       super.key});
 
-  @override
-  State<Favorito> createState() => _FavoritoState();
-}
-
-class _FavoritoState extends State<Favorito> {
   bool stringValidator(String? value) {
     if (value != null) {
       return true;
@@ -60,21 +55,21 @@ class _FavoritoState extends State<Favorito> {
                   ),
                   Expanded(
                     child: Text(
-                      stringValidator(widget.nome)
-                          ? "Nome: " + widget.nome!
-                          : stringValidator(widget.cargo)
-                              ? "Cargo: " + widget.cargo!
-                              : stringValidator(widget.lotacao)
-                                  ? "Lotação: " + widget.lotacao!
-                                  : stringValidator(widget.mes) &&
-                                          stringValidator(widget.ano)
-                                      ? "Mês: " + widget.mes! + "\nAno: " + widget.ano!
+                      stringValidator(nome)
+                          ? "Nome: " + nome!
+                          : stringValidator(cargo)
+                              ? "Cargo: " + cargo!
+                              : stringValidator(lotacao)
+                                  ? "Lotação: " + lotacao!
+                                  : stringValidator(mes) &&
+                                          stringValidator(ano)
+                                      ? "Mês: " + mes! + "\nAno: " + ano!
                                       : doubleValidator(
-                                                  widget.salarioInicial) &&
+                                                  salarioInicial) &&
                                               doubleValidator(
-                                                  widget.salarioFinal)
-                                          ? "R\$" + widget.salarioInicial!.toString() + " - R\$" +
-                                              widget.salarioFinal!.toString()
+                                                  salarioFinal)
+                                          ? "R\$" + salarioInicial!.toString() + " - R\$" +
+                                              salarioFinal!.toString()
                                           : "",
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,

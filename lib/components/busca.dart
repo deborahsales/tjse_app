@@ -7,18 +7,13 @@ import '../screens/lotacao_screen.dart';
 import '../screens/mes_ano_screen.dart';
 import '../screens/nome_screen.dart';
 
-class Busca extends StatefulWidget {
+class Busca extends StatelessWidget {
   final String nome;
   final String icone;
   final int rota;
 
   const Busca(this.nome, this.icone, this.rota, {super.key});
 
-  @override
-  State<Busca> createState() => _BuscaState();
-}
-
-class _BuscaState extends State<Busca> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,7 +24,7 @@ class _BuscaState extends State<Busca> {
             height: 100,
             child: ElevatedButton(
               onPressed: () {
-                switch (widget.rota) {
+                switch (rota) {
                   case 1:
                     Navigator.push(
                       context,
@@ -86,7 +81,7 @@ class _BuscaState extends State<Busca> {
                   ),
                   Expanded(
                     child: Text(
-                      widget.nome,
+                      nome,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 22,
@@ -105,7 +100,7 @@ class _BuscaState extends State<Busca> {
               height: 100,
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(4),
-                  child: Image.asset(widget.icone, fit: BoxFit.scaleDown))),
+                  child: Image.asset(icone, fit: BoxFit.scaleDown))),
         ]));
   }
 }
