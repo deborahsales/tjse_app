@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 
-class Resultado extends StatelessWidget {
+class Resultado extends StatefulWidget {
   final String tituloUm;
   final String tituloDois;
   final String dados;
   final String dadosExpandidos;
 
-  Resultado(this.tituloUm, this.tituloDois, this.dados, this.dadosExpandidos,
+  const Resultado(this.tituloUm, this.tituloDois, this.dados, this.dadosExpandidos,
       {super.key});
 
+  @override
+  State<Resultado> createState() => _ResultadoState();
+}
+
+class _ResultadoState extends State<Resultado> {
   bool expandedValidator = false;
+
+  Icon iconeAbrir =  Icon(Icons.keyboard_arrow_down_rounded, color: Colors.black, size: 40);
+
+  Icon iconeFechar =  const Icon(Icons.keyboard_arrow_up_rounded, color: Colors.black, size: 40);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +38,7 @@ class Resultado extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "$tituloUm $tituloDois",
+                    "${widget.tituloUm} ${widget.tituloDois}",
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 28,
@@ -44,12 +53,17 @@ class Resultado extends StatelessWidget {
                     bottomLeft: Radius.circular(5),
                     bottomRight: Radius.circular(5))),
             child: ExpansionTile(
+              onExpansionChanged: (expanded) {
+                setState(() {
+                  expandedValidator = expanded;
+                });
+              },
               expandedAlignment: Alignment.center,
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    dados,
+                    widget.dados,
                     style: const TextStyle(
                         fontSize: 28, fontWeight: FontWeight.bold),
                   ),
@@ -57,14 +71,10 @@ class Resultado extends StatelessWidget {
               ),
               trailing: Container(
                 margin: const EdgeInsets.only(top: 50),
-                child: const Icon(
-                  Icons.keyboard_arrow_down_rounded,
-                  color: Colors.black,
-                  size: 40,
-                ),
+                child: expandedValidator ? iconeFechar : iconeAbrir,
               ),
               children: <Widget>[
-                Text(dadosExpandidos,
+                Text(widget.dadosExpandidos,
                     style: const TextStyle(
                         fontSize: 28, fontWeight: FontWeight.bold))
               ],
