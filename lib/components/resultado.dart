@@ -6,7 +6,8 @@ class Resultado extends StatefulWidget {
   final String dados;
   final String dadosExpandidos;
 
-  const Resultado(this.tituloUm, this.tituloDois, this.dados, this.dadosExpandidos,
+  const Resultado(
+      this.tituloUm, this.tituloDois, this.dados, this.dadosExpandidos,
       {super.key});
 
   @override
@@ -16,9 +17,11 @@ class Resultado extends StatefulWidget {
 class _ResultadoState extends State<Resultado> {
   bool expandedValidator = false;
 
-  Icon iconeAbrir =  Icon(Icons.keyboard_arrow_down_rounded, color: Colors.black, size: 40);
+  Icon iconeAbrir =
+      Icon(Icons.keyboard_arrow_down_rounded, color: Colors.black, size: 40);
 
-  Icon iconeFechar =  const Icon(Icons.keyboard_arrow_up_rounded, color: Colors.black, size: 40);
+  Icon iconeFechar = const Icon(Icons.keyboard_arrow_up_rounded,
+      color: Colors.black, size: 40);
 
   @override
   Widget build(BuildContext context) {
