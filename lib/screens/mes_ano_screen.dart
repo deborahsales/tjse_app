@@ -1,4 +1,3 @@
-import 'package:disp_moveis/exemplos/exemplo_mes_ano_screen.dart';
 import 'package:flutter/material.dart';
 import '../components/barra_inferior.dart';
 import '../data/tjse_dao.dart';
@@ -96,24 +95,14 @@ class _MesAnoScreenState extends State<MesAnoScreen> {
                             );
                           }).toList(),
                           onChanged: (String? selectedValue) {
-                            setState(() {
-                              anoDropdownValue = selectedValue;
-                              {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const ExemploMesAnoScreen(),
-                                  ),
-                                );
-                              }
-                            });
+                            setState(() { anoDropdownValue = selectedValue; { } });
                           }),
                     ),
                   ),
                 ),
               ],
             ),
-            Expanded(child: ListView(children: []))
+            Expanded(child: ListView(children: const []))
           ],
         ),
       ),

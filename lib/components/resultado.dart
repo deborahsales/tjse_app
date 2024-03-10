@@ -18,7 +18,7 @@ class _ResultadoState extends State<Resultado> {
   bool expandedValidator = false;
 
   Icon iconeAbrir =
-      Icon(Icons.keyboard_arrow_down_rounded, color: Colors.black, size: 40);
+      const Icon(Icons.keyboard_arrow_down_rounded, color: Colors.black, size: 40);
 
   Icon iconeFechar = const Icon(Icons.keyboard_arrow_up_rounded,
       color: Colors.black, size: 40);

@@ -1,4 +1,3 @@
-import 'package:disp_moveis/components/notificacoes.dart';
 import 'package:flutter/material.dart';
 import '../components/barra_inferior.dart';
 
@@ -25,11 +24,7 @@ class _NotificacoesScreenState extends State<NotificacoesScreen> {
         backgroundColor: Colors.blue,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: ListView(children: const [
-        Notificacoes("A folha de dezembro já está disponível!"),
-        Notificacoes("A folha de novembro já está disponível!"),
-        Notificacoes("A folha de outrubro já está disponível!")
-      ]),
+      body: ListView(children: const []),
       bottomNavigationBar: const BarraInferior(),
     );
   }

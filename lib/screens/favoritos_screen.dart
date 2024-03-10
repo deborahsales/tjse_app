@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../components/barra_inferior.dart';
-import '../components/favorito.dart';
 
 class FavoritosScreen extends StatefulWidget {
   const FavoritosScreen({super.key});
@@ -25,18 +24,7 @@ class _FavoritosScreenState extends State<FavoritosScreen> {
         backgroundColor: Colors.blue,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: ListView(children: [
-        Favorito(nome: "Joe Doe"),
-        Favorito(cargo: "Juiz"),
-        Favorito(
-          salarioFinal: 1000,
-          salarioInicial: 900,
-        ),
-        Favorito(
-          mes: "Janeiro",
-          ano: "2023"
-        )
-      ]),
+      body: ListView(children: const []),
       bottomNavigationBar: const BarraInferior(),
     );
   }

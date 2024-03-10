@@ -1,4 +1,3 @@
-import 'package:disp_moveis/exemplos/exemplo_faixa_salarial_screen.dart';
 import 'package:flutter/material.dart';
 import '../components/barra_inferior.dart';
 
@@ -91,14 +90,7 @@ class _FaixaSalarialScreenState extends State<FaixaSalarialScreen> {
                     height: 60,
                     width: 60,
                     child: IconButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ExemploFaixaSalarialScreen(),
-                          ),
-                        );
-                      },
+                      onPressed: () {},
                       icon: const Icon(Icons.search, size: 40),
                       color: Colors.black,
                     ),
@@ -107,7 +99,7 @@ class _FaixaSalarialScreenState extends State<FaixaSalarialScreen> {
               ],
             ),
             Expanded(
-                child: ListView(children: []))
+                child: ListView(children: const []))
           ],
         ),
       ),

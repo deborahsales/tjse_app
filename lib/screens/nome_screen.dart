@@ -1,4 +1,3 @@
-import 'package:disp_moveis/exemplos/exemplo_nome_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../components/barra_inferior.dart';
@@ -62,14 +61,7 @@ class _NomeScreenState extends State<NomeScreen> {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const ExemploNomeScreen(),
-                              ),
-                            );
-                          },
+                          onPressed: () {},
                           icon: const Icon(Icons.search, size: 40),
                           color: Colors.black,
                         )

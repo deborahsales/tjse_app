@@ -1,4 +1,3 @@
-import 'package:disp_moveis/exemplos/exemplo_cargo_screen.dart';
 import 'package:flutter/material.dart';
 import '../components/barra_inferior.dart';
 import '../data/tjse_dao.dart';
@@ -56,21 +55,11 @@ class _CargoScreenState extends State<CargoScreen> {
                       );
                     }).toList(),
                     onChanged: (String? selectedValue) {
-                      setState(() {
-                        dropdownValue = selectedValue;
-                        {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const ExemploCargoScreen(),
-                            ),
-                          );
-                        }
-                      });
+                      setState(() { dropdownValue = selectedValue;{}});
                     }),
               ),
             ),
-            Expanded(child: ListView(children: []))
+            Expanded(child: ListView(children: const []))
           ],
         ),
       ),

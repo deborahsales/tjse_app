@@ -1,4 +1,3 @@
-import 'package:disp_moveis/exemplos/exemplo_avancada_screen.dart';
 import 'package:flutter/material.dart';
 import '../components/barra_inferior.dart';
 import '../data/tjse_dao.dart';
@@ -262,14 +261,7 @@ class _AvanScreenState extends State<AvanScreen> {
                     height: 60,
                     width: 60,
                     child: IconButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ExemploAvanScreen(),
-                          ),
-                        );
-                      },
+                      onPressed: () {},
                       icon: const Icon(Icons.search, size: 40),
                       color: Colors.black,
                     ),
@@ -278,7 +270,7 @@ class _AvanScreenState extends State<AvanScreen> {
               ],
             ),
             Expanded(
-                child: ListView(children: []))
+                child: ListView(children: const []))
           ],
         ),
       ),

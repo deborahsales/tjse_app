@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class Favorito extends StatelessWidget {
-  String? nome;
-  String? cargo;
-  String? lotacao;
-  String? mes;
-  String? ano;
-  double? salarioInicial;
-  double? salarioFinal;
+  final String? nome;
+  final String? cargo;
+  final String? lotacao;
+  final String? mes;
+  final String? ano;
+  final double? salarioInicial;
+  final double? salarioFinal;
 
-  Favorito(
+  const Favorito(
       {this.nome,
       this.cargo,
       this.lotacao,
@@ -56,20 +56,19 @@ class Favorito extends StatelessWidget {
                   Expanded(
                     child: Text(
                       stringValidator(nome)
-                          ? "Nome: " + nome!
+                          ? "Nome: ${nome!}"
                           : stringValidator(cargo)
-                              ? "Cargo: " + cargo!
+                              ? "Cargo: ${cargo!}"
                               : stringValidator(lotacao)
-                                  ? "Lotação: " + lotacao!
+                                  ? "Lotação: ${lotacao!}"
                                   : stringValidator(mes) &&
                                           stringValidator(ano)
-                                      ? "Mês: " + mes! + "\nAno: " + ano!
+                                      ? "Mês: ${mes!}\nAno: ${ano!}"
                                       : doubleValidator(
                                                   salarioInicial) &&
                                               doubleValidator(
                                                   salarioFinal)
-                                          ? "R\$" + salarioInicial!.toString() + " - R\$" +
-                                              salarioFinal!.toString()
+                                          ? "R\$${salarioInicial!} - R\$${salarioFinal!}"
                                           : "",
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,

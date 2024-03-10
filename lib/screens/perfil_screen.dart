@@ -1,4 +1,3 @@
-import 'package:disp_moveis/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import '../components/barra_inferior.dart';
 import '../components/perfil.dart';
@@ -37,14 +36,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
             Padding(
               padding: const EdgeInsets.all(20),
               child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const LoginScreen(),
-                      ),
-                    );
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
