@@ -60,10 +60,12 @@ for i, arquivo in enumerate(arquivos):
     df['ano'] = int(ano)
     df['mes'] = meses[mes-1]
     
+    # Lista de colunas a serem modificadas
+    colunas_para_modificar = ['Remuneração Paradigma', 'Vantagens Pessoais', 'Subsídio, Diferença de Subsídio, Função de Confiança ou Cargo em Comissão', 'Indenizações', 'Vantagens Eventuais', 'Gratificações', 'Total de Créditos', 'Previdência Pública', 'Imposto de Renda', 'Descontos Diversos', 'Retenção por Teto constitucional', 'Total de débitos', 'Rendimento Líquido', 'Remuneração do Órgão de origem', 'Diárias']
+
     # Corrige a formatação dos valores
-    for coluna in ['Remuneração Paradigma', 'Vantagens Pessoais', 'Subsídio, Diferença de Subsídio, Função de Confiança ou Cargo em Comissão', 'Indenizações', 'Vantagens Eventuais', 'Gratificações', 'Total de Créditos', 'Previdência Pública', 'Imposto de Renda', 'Descontos Diversos', 'Retenção por Teto constitucional', 'Total de débitos', 'Rendimento Líquido', 'Remuneração do Órgão de origem', 'Diárias']:
-        df[coluna] = df[coluna].str.replace('.', '')
-        df[coluna] = df[coluna].str.replace(',', '.')
+    for coluna in colunas_para_modificar:
+        df[coluna] = df[coluna].str.replace('.', '').str.replace(',', '.').astype(float)
     
     post(df)
     print(f'{arquivo} cadastrado!')
