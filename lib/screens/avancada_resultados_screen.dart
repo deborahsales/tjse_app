@@ -3,24 +3,38 @@ import '../components/barra_inferior.dart';
 import '../components/resultado.dart';
 import '../data/tjse_dao.dart';
 
+class ResultadoAvancadaScreen extends StatefulWidget {
+  final String nome;
+  final String cargo;
+  final String lotacao;
+  final String mes;
+  final String ano;
+  final String min;
+  final String max;
 
-class LotacaoScreen extends StatefulWidget {
-  const LotacaoScreen({super.key});
+  const ResultadoAvancadaScreen({
+    Key? key,
+    String? nome,
+    String? cargo,
+    String? lotacao,
+    String? mes,
+    String? ano,
+    String? min,
+    String? max,
+  })  : nome = nome ?? '',
+        cargo = cargo ?? '',
+        lotacao = lotacao ?? '',
+        mes = mes ?? '',
+        ano = ano ?? '',
+        min = min ?? '',
+        max = max ?? '',
+        super(key: key);
 
   @override
-  State<LotacaoScreen> createState() => _LotacaoScreenState();
+  State<ResultadoAvancadaScreen> createState() => _ResultadoAvancadaScreenState();
 }
 
-class _LotacaoScreenState extends State<LotacaoScreen> {
-  String? dropdownValue;
-  bool _buscar = false;
-
-  void _atualizarBusca()
-  {
-    setState(() {
-      _buscar = true;
-    });
-  }
+class _ResultadoAvancadaScreenState extends State<ResultadoAvancadaScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -39,39 +53,10 @@ class _LotacaoScreenState extends State<LotacaoScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: Colors.white,
-              ),
-              height: 60,
-              width: 380,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 15, top: 8, bottom: 8, right: 8),
-                child: DropdownButton(
-                    value: dropdownValue,
-                    icon: const Icon(Icons.keyboard_arrow_down_rounded),
-                    iconSize: 40,
-                    isExpanded: true,
-                    hint: const Text("Busca por lotação..."),
-                    underline: Container(),
-                    style: const TextStyle(fontSize: 20, color: Colors.black),
-                    items: TJSEDao.lotacaoList.map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    onChanged: (String? selectedValue) {
-                      setState(() { dropdownValue = selectedValue; _atualizarBusca();{} });
-                    }),
-              ),
-            ),
+        child:
             Expanded(
-              child: _buscar ? FutureBuilder<List<Resultado>>(
-                future: TJSEDao().getLotacao(dropdownValue!),
+              child: FutureBuilder<List<Resultado>>(
+                future: TJSEDao().getAvancada(widget.nome, widget.cargo, widget.lotacao, widget.ano, widget.mes, widget.min, widget.max),
                 builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                   List<Resultado>? items = snapshot.data;
                   switch (snapshot.connectionState) {
@@ -125,9 +110,7 @@ class _LotacaoScreenState extends State<LotacaoScreen> {
                       return const Text('Erro ao carregar resultados');
                   }
                 },
-              ) : const SizedBox(),)
-          ],
-        ),
+              )),
       ),
       bottomNavigationBar: const BarraInferior(),
     );

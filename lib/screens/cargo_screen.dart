@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../components/barra_inferior.dart';
+import '../components/resultado.dart';
 import '../data/tjse_dao.dart';
 
 class CargoScreen extends StatefulWidget {
@@ -11,6 +12,14 @@ class CargoScreen extends StatefulWidget {
 
 class _CargoScreenState extends State<CargoScreen> {
   String? dropdownValue;
+  bool _buscar = false;
+
+  void _atualizarBusca()
+  {
+    setState(() {
+      _buscar = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +64,67 @@ class _CargoScreenState extends State<CargoScreen> {
                       );
                     }).toList(),
                     onChanged: (String? selectedValue) {
-                      setState(() { dropdownValue = selectedValue;{}});
+                      setState(() { dropdownValue = selectedValue;_atualizarBusca();{}});
                     }),
               ),
             ),
-            Expanded(child: ListView(children: const []))
+            Expanded(
+              child: _buscar ? FutureBuilder<List<Resultado>>(
+                future: TJSEDao().getCargo(dropdownValue!),
+                builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                  List<Resultado>? items = snapshot.data;
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.none:
+                      return const Center(
+                          child: Column(
+                            children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
+                              padding: EdgeInsets.all(25.0),
+                              child: Text('Carregando',
+                                  style: TextStyle(fontSize: 20)),
+                            )],
+                          ));
+                    case ConnectionState.waiting:
+                      return const Center(
+                          child: Column(
+                            children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
+                              padding: EdgeInsets.all(25.0),
+                              child: Text('Carregando',
+                                  style: TextStyle(fontSize: 20)),
+                            )],
+                          ));
+                    case ConnectionState.active:
+                      return const Center(
+                          child: Column(
+                            children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
+                              padding: EdgeInsets.all(25.0),
+                              child: Text('Carregando',
+                                  style: TextStyle(fontSize: 20)),
+                            )],
+                          ));
+                    case ConnectionState.done:
+                      if (snapshot.hasData && items != null) {
+                        if (items.isNotEmpty) {
+                          return ListView.builder(
+                              itemCount: items.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                final Resultado resultado = items[index];
+                                return resultado;
+                              });
+                        }
+                        return const Center(
+                          child: Column(
+                            children: [
+                              Icon(Icons.error_outline, size: 128),
+                              Text('Não há nenhum resultado',
+                                  style: TextStyle(fontSize: 32))
+                            ],
+                          ),
+                        );
+                      }
+                      return const Text('Erro ao carregar resultados');
+                  }
+                },
+              ) : const SizedBox(),)
           ],
         ),
       ),

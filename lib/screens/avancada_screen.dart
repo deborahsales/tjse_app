@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../components/barra_inferior.dart';
 import '../data/tjse_dao.dart';
+import 'avancada_resultados_screen.dart';
 
 class AvanScreen extends StatefulWidget {
   const AvanScreen({super.key});
@@ -72,7 +73,8 @@ class _AvanScreenState extends State<AvanScreen> {
                     height: 60,
                     width: 170,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 15, top: 8, bottom: 8, right: 8),
+                      padding: const EdgeInsets.only(
+                          left: 15, top: 8, bottom: 8, right: 8),
                       child: DropdownButton(
                           value: cargoDropdownValue,
                           icon: const Icon(Icons.keyboard_arrow_down_rounded),
@@ -80,7 +82,8 @@ class _AvanScreenState extends State<AvanScreen> {
                           isExpanded: true,
                           hint: const Text("Cargo..."),
                           underline: Container(),
-                          style: const TextStyle(fontSize: 20, color: Colors.black),
+                          style: const TextStyle(
+                              fontSize: 20, color: Colors.black),
                           items: TJSEDao.cargoList.map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
@@ -105,7 +108,8 @@ class _AvanScreenState extends State<AvanScreen> {
                     height: 60,
                     width: 170,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 15, top: 8, bottom: 8, right: 8),
+                      padding: const EdgeInsets.only(
+                          left: 15, top: 8, bottom: 8, right: 8),
                       child: DropdownButton(
                           value: lotacaoDropdownValue,
                           icon: const Icon(Icons.keyboard_arrow_down_rounded),
@@ -113,7 +117,8 @@ class _AvanScreenState extends State<AvanScreen> {
                           isExpanded: true,
                           hint: const Text("Lotação..."),
                           underline: Container(),
-                          style: const TextStyle(fontSize: 20, color: Colors.black),
+                          style: const TextStyle(
+                              fontSize: 20, color: Colors.black),
                           items: TJSEDao.lotacaoList.map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
@@ -144,7 +149,8 @@ class _AvanScreenState extends State<AvanScreen> {
                     height: 60,
                     width: 170,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 15, top: 8, bottom: 8, right: 8),
+                      padding: const EdgeInsets.only(
+                          left: 15, top: 8, bottom: 8, right: 8),
                       child: DropdownButton(
                           value: mesDropdownValue,
                           icon: const Icon(Icons.keyboard_arrow_down_rounded),
@@ -152,7 +158,8 @@ class _AvanScreenState extends State<AvanScreen> {
                           isExpanded: true,
                           hint: const Text("Mês..."),
                           underline: Container(),
-                          style: const TextStyle(fontSize: 20, color: Colors.black),
+                          style: const TextStyle(
+                              fontSize: 20, color: Colors.black),
                           items: TJSEDao.mesList.map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
@@ -177,7 +184,8 @@ class _AvanScreenState extends State<AvanScreen> {
                     height: 60,
                     width: 170,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 15, top: 8, bottom: 8, right: 8),
+                      padding: const EdgeInsets.only(
+                          left: 15, top: 8, bottom: 8, right: 8),
                       child: DropdownButton(
                           value: anoDropdownValue,
                           icon: const Icon(Icons.keyboard_arrow_down_rounded),
@@ -185,7 +193,8 @@ class _AvanScreenState extends State<AvanScreen> {
                           isExpanded: true,
                           hint: const Text("Ano..."),
                           underline: Container(),
-                          style: const TextStyle(fontSize: 20, color: Colors.black),
+                          style: const TextStyle(
+                              fontSize: 20, color: Colors.black),
                           items: TJSEDao.anoList.map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
@@ -261,7 +270,22 @@ class _AvanScreenState extends State<AvanScreen> {
                     height: 60,
                     width: 60,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ResultadoAvancadaScreen(
+                              nome: nameController.text,
+                              cargo: cargoDropdownValue,
+                              lotacao: lotacaoDropdownValue,
+                              mes: mesDropdownValue,
+                              ano: anoDropdownValue,
+                              min: faixaInicialController.text,
+                              max: faixaFinalController.text,
+                            ),
+                          ),
+                        );
+                      },
                       icon: const Icon(Icons.search, size: 40),
                       color: Colors.black,
                     ),
@@ -269,8 +293,7 @@ class _AvanScreenState extends State<AvanScreen> {
                 )
               ],
             ),
-            Expanded(
-                child: ListView(children: const []))
+            Expanded(child: ListView(children: const []))
           ],
         ),
       ),

@@ -41,12 +41,16 @@ class _ResultadoState extends State<Resultado> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: Text(
-                      "${widget.tituloUm}\n${widget.tituloDois}",
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Colors.white),
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        "${widget.tituloUm}\n${widget.tituloDois}",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.white),
+                      ),
                     ),
                   )
                 ]),
@@ -70,7 +74,7 @@ class _ResultadoState extends State<Resultado> {
                   Text(
                     widget.dados,
                     style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold),
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -81,7 +85,7 @@ class _ResultadoState extends State<Resultado> {
               children: <Widget>[
                 Text(widget.dadosExpandidos,
                     style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold))
+                        fontSize: 20, fontWeight: FontWeight.bold))
               ],
             ),
           ),

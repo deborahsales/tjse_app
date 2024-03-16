@@ -1,61 +1,79 @@
 import 'package:disp_moveis/components/resultado.dart';
-
 import 'database.dart';
 
 class TJSEDao {
-
   Future<List<Resultado>> getNome(String nome) async {
     final database = PostgresDatabase();
     await database.initialize();
-    final List<Map<String, dynamic>> result =
-        await database.queryByNome(nome);
-    return toListNome(result);
+    final List<Map<String, dynamic>> result = await database.queryByNome(nome);
+    return toList(result);
   }
 
-  List<Resultado> toListNome(List<Map<String, dynamic>> mapaResultados){
+  Future<List<Resultado>> getCargo(String cargo) async {
+    final database = PostgresDatabase();
+    await database.initialize();
+    final List<Map<String, dynamic>> result =
+        await database.queryByCargo(cargo);
+    return toList(result);
+  }
+
+  Future<List<Resultado>> getLotacao(String lotacao) async {
+    final database = PostgresDatabase();
+    await database.initialize();
+    final List<Map<String, dynamic>> result =
+        await database.queryByLotacao(lotacao);
+    return toList(result);
+  }
+
+  Future<List<Resultado>> getMesAno(String mes, String ano) async {
+    final database = PostgresDatabase();
+    await database.initialize();
+    final List<Map<String, dynamic>> result =
+        await database.queryByMesAno(mes, ano);
+    return toList(result);
+  }
+
+  Future<List<Resultado>> getFaixaSalarial(String min, String max) async {
+    final database = PostgresDatabase();
+    await database.initialize();
+    final List<Map<String, dynamic>> result =
+        await database.queryByFaixaSalarial(min, max);
+    return toList(result);
+  }
+
+  Future<List<Resultado>> getAvancada(String nome, String cargo, String lotacao,
+      String ano, String mes, String min, String max) async {
+    final database = PostgresDatabase();
+    await database.initialize();
+    final List<Map<String, dynamic>> result = await database
+        .queryByAvancada(nome, cargo, lotacao, ano, mes, min, max);
+    return toList(result);
+  }
+
+  List<Resultado> toList(List<Map<String, dynamic>> mapaResultados) {
     final List<Resultado> resultados = [];
-    for (Map<String, dynamic> linha in mapaResultados){
+    for (Map<String, dynamic> linha in mapaResultados) {
       String cargo = linha['cargo'];
       String lotacao = linha['lotacao'];
       String rendLiquido = linha['rend_liquido'];
       String totalCreditos = linha['total_creditos'];
       String totalDebitos = linha['total_debitos'];
-      String mes = linha['mes'];
+      String mes = linha['mes'].toUpperCase();
       String ano = linha['ano'].toString();
       String tituloUm = linha['nome'];
       String tituloDois = '$mes $ano';
       String dados = 'Cargo: $cargo\nLotacao: $lotacao\nR\$$rendLiquido';
-      String dadosExpandidos = 'Total créditos: $totalCreditos\nTotal débitos: $totalDebitos';
-      print(dadosExpandidos);
-      final Resultado resultado = Resultado(tituloUm, tituloDois, dados, dadosExpandidos);
+      String dadosExpandidos =
+          'Total créditos: $totalCreditos\nTotal débitos: $totalDebitos';
+      final Resultado resultado =
+          Resultado(tituloUm, tituloDois, dados, dadosExpandidos);
       resultados.add(resultado);
     }
     return resultados;
   }
 
-  Future<List<Resultado>> getCargo(String cargo) async {
-    return [];
-  }
-
-  Future<List<Resultado>> getLotacao(String lotacao) async {
-    return [];
-  }
-
-  Future<List<Resultado>> getMesAno(String mes, String ano) async {
-    return [];
-  }
-
-  Future<List<Resultado>> getFaixaSalarial(
-      double faixaInicial, double faixaFinal) async {
-    return [];
-  }
-
-  Future<List<Resultado>> getAvancada(String nome, String cargo, String lotacao,
-      String mes, String ano, double faixaInicial, double faixaFinal) async {
-    return [];
-  }
-
   static const List<String> cargoList = <String>[
+    '',
     '1º Sargento',
     '1º Tenente',
     '2º Sargento',
@@ -87,7 +105,9 @@ class TJSEDao {
     'Tabelião',
     'Técnico Judiciário'
   ];
+
   static const List<String> lotacaoList = <String>[
+    '',
     'A Disposição',
     'Administração',
     'Aposentados do Poder Judiciário',
@@ -119,7 +139,9 @@ class TJSEDao {
     'Diretoria',
     'Entrância Final'
   ];
+
   static const List<String> mesList = <String>[
+    '',
     'Janeiro',
     'Fevereiro',
     'Março',
@@ -133,12 +155,15 @@ class TJSEDao {
     'Novembro',
     'Dezembro'
   ];
+
   static const List<String> anoList = <String>[
+    '',
     '2018',
     '2019',
     '2020',
     '2021',
     '2022',
-    '2023'
+    '2023',
+    '2024'
   ];
 }
