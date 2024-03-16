@@ -1,4 +1,60 @@
+import 'package:disp_moveis/components/resultado.dart';
+
+import 'database.dart';
+
 class TJSEDao {
+
+  Future<List<Resultado>> getNome(String nome) async {
+    final database = PostgresDatabase();
+    await database.initialize();
+    final List<Map<String, dynamic>> result =
+        await database.queryByNome(nome);
+    return toListNome(result);
+  }
+
+  List<Resultado> toListNome(List<Map<String, dynamic>> mapaResultados){
+    final List<Resultado> resultados = [];
+    for (Map<String, dynamic> linha in mapaResultados){
+      String cargo = linha['cargo'];
+      String lotacao = linha['lotacao'];
+      String rendLiquido = linha['rend_liquido'];
+      String totalCreditos = linha['total_creditos'];
+      String totalDebitos = linha['total_debitos'];
+      String mes = linha['mes'];
+      String ano = linha['ano'].toString();
+      String tituloUm = linha['nome'];
+      String tituloDois = '$mes $ano';
+      String dados = 'Cargo: $cargo\nLotacao: $lotacao\nR\$$rendLiquido';
+      String dadosExpandidos = 'Total créditos: $totalCreditos\nTotal débitos: $totalDebitos';
+      print(dadosExpandidos);
+      final Resultado resultado = Resultado(tituloUm, tituloDois, dados, dadosExpandidos);
+      resultados.add(resultado);
+    }
+    return resultados;
+  }
+
+  Future<List<Resultado>> getCargo(String cargo) async {
+    return [];
+  }
+
+  Future<List<Resultado>> getLotacao(String lotacao) async {
+    return [];
+  }
+
+  Future<List<Resultado>> getMesAno(String mes, String ano) async {
+    return [];
+  }
+
+  Future<List<Resultado>> getFaixaSalarial(
+      double faixaInicial, double faixaFinal) async {
+    return [];
+  }
+
+  Future<List<Resultado>> getAvancada(String nome, String cargo, String lotacao,
+      String mes, String ano, double faixaInicial, double faixaFinal) async {
+    return [];
+  }
+
   static const List<String> cargoList = <String>[
     '1º Sargento',
     '1º Tenente',
