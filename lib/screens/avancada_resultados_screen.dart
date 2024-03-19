@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:resultados_tjse/resultados_tjse.dart';
 import '../components/barra_inferior.dart';
-import '../components/resultado.dart';
 import '../data/tjse_dao.dart';
 
 class ResultadoAvancadaScreen extends StatefulWidget {

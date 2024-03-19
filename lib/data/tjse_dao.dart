@@ -1,4 +1,4 @@
-import 'package:disp_moveis/components/resultado.dart';
+import 'package:resultados_tjse/resultados_tjse.dart';
 import 'database.dart';
 
 class TJSEDao {
