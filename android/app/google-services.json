@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "121395980797",
+    "project_id": "folhas-tjse",
+    "storage_bucket": "folhas-tjse.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121395980797:android:3ad4bcd6f2e36704965194",
+        "android_client_info": {
+          "package_name": "deborahsales.tjse.disp_moveis"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7vEYWxK7bixfoIILkJz-dmK5VC70n_WM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
