@@ -1,7 +1,16 @@
 import 'package:resultados_tjse/resultados_tjse.dart';
+import '../components/notificacoes.dart';
 import 'database.dart';
 
 class TJSEDao {
+
+  Future<List<Notificacoes>> getNotificacao() async {
+    final database = PostgresDatabase();
+    await database.initialize();
+    final List<Map<String, dynamic>> result = await database.queryNotificacao();
+    return toListNotificacao(result);
+  }
+
   Future<List<Resultado>> getNome(String nome) async {
     final database = PostgresDatabase();
     await database.initialize();
@@ -67,6 +76,16 @@ class TJSEDao {
           'Total créditos: $totalCreditos\nTotal débitos: $totalDebitos';
       final Resultado resultado =
           Resultado(tituloUm, tituloDois, dados, dadosExpandidos);
+      resultados.add(resultado);
+    }
+    return resultados;
+  }
+
+  List<Notificacoes> toListNotificacao(List<Map<String, dynamic>> mapaResultados) {
+    final List<Notificacoes> resultados = [];
+    for (Map<String, dynamic> linha in mapaResultados) {
+      String mensagem = linha['notificacao'];
+      final Notificacoes resultado = Notificacoes(mensagem);
       resultados.add(resultado);
     }
     return resultados;
@@ -158,7 +177,6 @@ class TJSEDao {
 
   static const List<String> anoList = <String>[
     '',
-    '2018',
     '2019',
     '2020',
     '2021',

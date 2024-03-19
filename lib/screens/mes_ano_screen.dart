@@ -162,7 +162,11 @@ class _MesAnoScreenState extends State<MesAnoScreen> {
                           ),
                         );
                       }
-                      return const Text('Erro ao carregar resultados');
+                      return const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text('Erro ao carregar resultados',
+                            style: TextStyle(fontSize: 32)),
+                      );
                   }
                 },
               ) : const SizedBox(),)

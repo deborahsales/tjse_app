@@ -20,10 +20,18 @@ class PostgresDatabase {
     ));
   }
 
+  Future<List<Map<String, dynamic>>> queryNotificacao() async {
+    final result = await connection.execute(
+      Sql.named(
+          'SELECT * FROM tjse.notificacao'),
+    );
+    return result.toList().map((row) => row.toColumnMap()).toList();
+  }
+
   Future<List<Map<String, dynamic>>> queryByNome(String nome) async {
     final result = await connection.execute(
       Sql.named(
-          'SELECT nome, mes, ano, cargo, lotacao, rend_liquido, total_creditos, total_debitos FROM tjse.folha WHERE nome ILIKE @nome'),
+          'SELECT nome, mes, ano, cargo, lotacao, rend_liquido, total_creditos, total_debitos FROM tjse.folha WHERE nome ILIKE @nome ORDER BY ano desc'),
       parameters: {'nome': '%$nome%'},
     );
     return result.toList().map((row) => row.toColumnMap()).toList();
@@ -32,7 +40,7 @@ class PostgresDatabase {
   Future<List<Map<String, dynamic>>> queryByCargo(String cargo) async {
     final result = await connection.execute(
       Sql.named(
-          'SELECT nome, mes, ano, cargo, lotacao, rend_liquido, total_creditos, total_debitos FROM tjse.folha WHERE cargo ILIKE @cargo'),
+          'SELECT nome, mes, ano, cargo, lotacao, rend_liquido, total_creditos, total_debitos FROM tjse.folha WHERE cargo ILIKE @cargo ORDER BY ano desc'),
       parameters: {'cargo': '%$cargo%'},
     );
     return result.toList().map((row) => row.toColumnMap()).toList();
@@ -41,7 +49,7 @@ class PostgresDatabase {
   Future<List<Map<String, dynamic>>> queryByLotacao(String lotacao) async {
     final result = await connection.execute(
       Sql.named(
-          'SELECT nome, mes, ano, cargo, lotacao, rend_liquido, total_creditos, total_debitos FROM tjse.folha WHERE lotacao ILIKE @lotacao'),
+          'SELECT nome, mes, ano, cargo, lotacao, rend_liquido, total_creditos, total_debitos FROM tjse.folha WHERE lotacao ILIKE @lotacao ORDER BY ano desc'),
       parameters: {'lotacao': '%$lotacao%'},
     );
     return result.toList().map((row) => row.toColumnMap()).toList();
@@ -61,7 +69,7 @@ class PostgresDatabase {
       String min, String max) async {
     final result = await connection.execute(
       Sql.named(
-          'SELECT nome, mes, ano, cargo, lotacao, rend_liquido, total_creditos, total_debitos FROM tjse.folha WHERE rend_liquido >= @min AND rend_liquido <= @max'),
+          'SELECT nome, mes, ano, cargo, lotacao, rend_liquido, total_creditos, total_debitos FROM tjse.folha WHERE rend_liquido >= @min AND rend_liquido <= @max ORDER BY ano desc'),
       parameters: {'min': double.parse(min), 'max': double.parse(max)},
     );
     return result.toList().map((row) => row.toColumnMap()).toList();
@@ -107,6 +115,8 @@ class PostgresDatabase {
       query += ' AND rend_liquido <= @max';
       parameters['max'] = double.parse(max);
     }
+
+    query += ' ORDER BY ano desc';
 
     final result = await connection.execute(Sql.named(query), parameters: parameters);
 
