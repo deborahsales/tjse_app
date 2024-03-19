@@ -1,5 +1,4 @@
 import 'package:disp_moveis/screens/autenticacao.dart';
-
 import 'screens/initial_screen.dart';
 import 'package:flutter/material.dart';
 

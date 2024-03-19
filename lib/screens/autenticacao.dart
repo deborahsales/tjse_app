@@ -73,29 +73,27 @@ class _AuthScreenState extends State<AuthScreen> {
                         width: 290,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Expanded(
-                            child: TextFormField(
-                              controller: _emailController,
-                              decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  label: Text(
-                                    "E-mail...",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-                                  ), floatingLabelBehavior: FloatingLabelBehavior.never),
-                              validator: (value) {
-                                if (value == null || value == "") {
-                                  return "O valor de e-mail deve ser preenchido";
-                                }
-                                if (!value.contains("@") ||
-                                    !value.contains(".") ||
-                                    value.length < 4) {
-                                  return "O valor do e-mail deve ser válido";
-                                }
-                                return null;
-                              },
-                            ),
+                          child: TextFormField(
+                            controller: _emailController,
+                            decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                label: Text(
+                                  "E-mail...",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
+                                ), floatingLabelBehavior: FloatingLabelBehavior.never),
+                            validator: (value) {
+                              if (value == null || value == "") {
+                                return "O valor de e-mail deve ser preenchido";
+                              }
+                              if (!value.contains("@") ||
+                                  !value.contains(".") ||
+                                  value.length < 4) {
+                                return "O valor do e-mail deve ser válido";
+                              }
+                              return null;
+                            },
                           ),
                         ),
                       ),
@@ -110,25 +108,23 @@ class _AuthScreenState extends State<AuthScreen> {
                         width: 290,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Expanded(
-                            child: TextFormField(
-                              controller: _senhaController,
-                              obscureText: true,
-                              decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  label: Text(
-                                    "Senha...",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-                                  ),floatingLabelBehavior: FloatingLabelBehavior.never,),
-                              validator: (value) {
-                                if (value == null || value.length < 4) {
-                                  return "Insira uma senha válida.";
-                                }
-                                return null;
-                              },
-                            ),
+                          child: TextFormField(
+                            controller: _senhaController,
+                            obscureText: true,
+                            decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                label: Text(
+                                  "Senha...",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
+                                ),floatingLabelBehavior: FloatingLabelBehavior.never,),
+                            validator: (value) {
+                              if (value == null || value.length < 4) {
+                                return "Insira uma senha válida.";
+                              }
+                              return null;
+                            },
                           ),
                         ),
                       ),
