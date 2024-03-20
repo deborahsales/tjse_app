@@ -1,4 +1,4 @@
-import 'package:disp_moveis/authentication/screens/autenticacao.dart';
+import 'package:disp_moveis/authentication/screens/auth_screen.dart';
 import 'package:disp_moveis/screens/initial_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

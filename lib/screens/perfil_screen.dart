@@ -14,7 +14,6 @@ class PerfilScreen extends StatefulWidget {
 class _PerfilScreenState extends State<PerfilScreen> {
   final tjseUri =
       Uri.parse('https://www.tjse.jus.br/transparencia-publico/inicio');
-  final String nome = AuthService().nomeUsuario() as String;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: ListView(children: [
-        Perfil(nome),
+        Perfil(AuthService().nomeUsuario(), context: context),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -41,6 +40,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
               child: ElevatedButton(
                   onPressed: () {
                     AuthService().deslogar();
+                    Navigator.pop(context);
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,

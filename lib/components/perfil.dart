@@ -1,12 +1,16 @@
+import 'package:disp_moveis/authentication/components/show_senha_confirmacao_dialog.dart';
 import 'package:flutter/material.dart';
 
-import '../authentication/services/auth_service.dart';
+class Perfil extends StatefulWidget {
+  final Future<String?> nome;
 
-class Perfil extends StatelessWidget {
-  final String nome;
+  const Perfil(this.nome, {super.key, required BuildContext context});
 
-  const Perfil(this.nome, {super.key});
+  @override
+  State<Perfil> createState() => _PerfilState();
+}
 
+class _PerfilState extends State<Perfil> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,17 +32,33 @@ class Perfil extends StatelessWidget {
                     height: 100,
                   ),
                   Expanded(
-                    child: Text(
-                      nome,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
-                          color: Colors.black),
-                    ),
+                    child: FutureBuilder<String?>(
+                        future: widget.nome,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            final nomeString = snapshot.data!;
+                            return Text(
+                              nomeString,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 22,
+                                  color: Colors.black),
+                            );
+                          } else if (snapshot.hasError) {
+                            return const Text(
+                              "Usuário",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 22,
+                                  color: Colors.black),
+                            );
+                          }
+                      return const Center(child: CircularProgressIndicator());
+                    }),
                   ),
                   IconButton(
                       onPressed: () {
-                        AuthService().removerConta();
+                        showSenhaConfirmacaoDialog(context: context, email: '');
                       },
                       icon: const Icon(
                         Icons.delete,

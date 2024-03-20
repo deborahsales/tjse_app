@@ -44,9 +44,9 @@ class AuthService {
   Future<String?> redefinicaoSenha({
     required String email,
   }) async {
-    try{
+    try {
       await _firebaseAuth.sendPasswordResetEmail(email: email);
-    } on FirebaseAuthException catch (e){
+    } on FirebaseAuthException catch (e) {
       return e.code;
     }
     return null;
@@ -61,14 +61,26 @@ class AuthService {
     return null;
   }
 
-  String nomeUsuario() {
-    String? nome = _firebaseAuth.currentUser!.displayName;
-    return nome!;
+  Future<String?> nomeUsuario() async {
+    try {
+      final user = _firebaseAuth.currentUser;
+      if (user == null) {
+        return "Usuário";
+      }
+      return user.displayName ?? 'Usuário';
+    } on FirebaseAuthException catch (e) {
+      return e.code;
+    }
   }
 
-  removerConta() async {
-    await _firebaseAuth.currentUser!.delete();
+  Future<String?> removerConta({required String senha}) async {
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(
+          email: _firebaseAuth.currentUser!.email!, password: senha);
+      await _firebaseAuth.currentUser!.delete();
+    } on FirebaseAuthException catch (e) {
+      return e.code;
+    }
+    return null;
   }
-
-
 }
