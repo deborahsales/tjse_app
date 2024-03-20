@@ -33,6 +33,7 @@ showSenhaConfirmacaoDialog({
                     .then((String? erro) {
                       if (erro == null) {
                         Navigator.pop(context);
+                        Navigator.pop(context);
                       }
                 });
               },
