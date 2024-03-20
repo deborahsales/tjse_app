@@ -1,5 +1,6 @@
-import 'package:disp_moveis/screens/autenticacao.dart';
+import 'package:disp_moveis/authentication/screens/autenticacao.dart';
 import 'package:disp_moveis/screens/initial_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -11,22 +12,6 @@ void main() async {
   );
   runApp(const MyApp());
 }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'TJSE - Folhas de Pagamento',
-//       theme: ThemeData(
-//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-//         useMaterial3: true,
-//       ),
-//       home: const InitialScreen(),
-//     );
-//   }
-// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -40,8 +25,29 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const AuthScreen(),
+      home: const RoteadorTelas(),
     );
   }
 }
 
+class RoteadorTelas extends StatelessWidget {
+  const RoteadorTelas({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: FirebaseAuth.instance.userChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else {
+          if (snapshot.hasData){
+            return const InitialScreen();
+          } else {
+            return const AuthScreen();
+          }
+        }
+      },
+    );
+  }
+}

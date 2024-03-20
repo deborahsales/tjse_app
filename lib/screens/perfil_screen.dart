@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../authentication/services/auth_service.dart';
 import '../components/barra_inferior.dart';
 import '../components/perfil.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -11,7 +12,9 @@ class PerfilScreen extends StatefulWidget {
 }
 
 class _PerfilScreenState extends State<PerfilScreen> {
-  final tjseUri = Uri.parse('https://www.tjse.jus.br/transparencia-publico/inicio');
+  final tjseUri =
+      Uri.parse('https://www.tjse.jus.br/transparencia-publico/inicio');
+  final String nome = AuthService().nomeUsuario() as String;
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +32,16 @@ class _PerfilScreenState extends State<PerfilScreen> {
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: ListView(children: [
-        const Perfil("Usuário XXXXX"),
+        Perfil(nome),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.all(20),
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    AuthService().deslogar();
+                  },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
@@ -61,8 +66,9 @@ class _PerfilScreenState extends State<PerfilScreen> {
             ),
             TextButton(
                 onPressed: () async {
-                  if (await canLaunchUrl(tjseUri)){
-                    await launchUrl(tjseUri, mode: LaunchMode.externalApplication);
+                  if (await canLaunchUrl(tjseUri)) {
+                    await launchUrl(tjseUri,
+                        mode: LaunchMode.externalApplication);
                   }
                 },
                 child: const Row(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../authentication/services/auth_service.dart';
+
 class Perfil extends StatelessWidget {
   final String nome;
 
@@ -33,7 +35,15 @@ class Perfil extends StatelessWidget {
                           fontSize: 22,
                           color: Colors.black),
                     ),
-                  )
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        AuthService().removerConta();
+                      },
+                      icon: const Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ))
                 ],
               ),
             ),

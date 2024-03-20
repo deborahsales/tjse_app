@@ -1,3 +1,5 @@
+import 'package:disp_moveis/authentication/components/show_snackbar.dart';
+import 'package:disp_moveis/authentication/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -16,6 +18,8 @@ class _AuthScreenState extends State<AuthScreen> {
   bool isEntrando = true;
 
   final _formKey = GlobalKey<FormState>();
+
+  AuthService authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +86,9 @@ class _AuthScreenState extends State<AuthScreen> {
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black),
-                                ), floatingLabelBehavior: FloatingLabelBehavior.never),
+                                ),
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.never),
                             validator: (value) {
                               if (value == null || value == "") {
                                 return "O valor de e-mail deve ser preenchido";
@@ -99,7 +105,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                      padding: const EdgeInsets.only(top: 8.0),
                       child: Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
@@ -112,13 +118,16 @@ class _AuthScreenState extends State<AuthScreen> {
                             controller: _senhaController,
                             obscureText: true,
                             decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                label: Text(
-                                  "Senha...",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black),
-                                ),floatingLabelBehavior: FloatingLabelBehavior.never,),
+                              border: InputBorder.none,
+                              label: Text(
+                                "Senha...",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.never,
+                            ),
                             validator: (value) {
                               if (value == null || value.length < 4) {
                                 return "Insira uma senha válida.";
@@ -127,6 +136,15 @@ class _AuthScreenState extends State<AuthScreen> {
                             },
                           ),
                         ),
+                      ),
+                    ),
+                    Visibility(
+                      visible: isEntrando,
+                      child: TextButton(
+                        onPressed: () {
+                          esqueciMinhaSenhaClidado();
+                        },
+                        child: const Text('Esqueci minha senha'),
                       ),
                     ),
                     Visibility(
@@ -154,7 +172,9 @@ class _AuthScreenState extends State<AuthScreen> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Colors.black),
-                                      ),floatingLabelBehavior: FloatingLabelBehavior.never,
+                                      ),
+                                      floatingLabelBehavior:
+                                          FloatingLabelBehavior.never,
                                     ),
                                     validator: (value) {
                                       if (value == null || value.length < 4) {
@@ -189,7 +209,9 @@ class _AuthScreenState extends State<AuthScreen> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Colors.black),
-                                      ),floatingLabelBehavior: FloatingLabelBehavior.never,
+                                      ),
+                                      floatingLabelBehavior:
+                                          FloatingLabelBehavior.never,
                                     ),
                                     validator: (value) {
                                       if (value == null || value.length < 3) {
@@ -225,7 +247,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         });
                       },
                       child: Padding(
-                        padding: const EdgeInsets.only(top:8.0),
+                        padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
                           (isEntrando)
                               ? "Ainda não tem conta?\nClique aqui para cadastrar."
@@ -263,11 +285,75 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   _entrarUsuario({required String email, required String senha}) {
-    print("Entrar usuário $email, $senha");
+    authService.entrarUsuario(email: email, senha: senha).then((String? erro) {
+      if (erro != null) {
+        showSnackBar(
+          context: context,
+          mensagem: erro,
+        );
+      }
+    });
   }
 
   _criarUsuario(
       {required String email, required String senha, required String nome}) {
-    print("Criar usuário $email, $senha, $nome");
+    authService
+        .cadastrarUsuario(
+      email: email,
+      senha: senha,
+      nome: nome,
+    )
+        .then((String? erro) {
+      if (erro != null) {
+        showSnackBar(
+          context: context,
+          mensagem: erro,
+        );
+      }
+    });
+  }
+
+  esqueciMinhaSenhaClidado() {
+    String email = _emailController.text;
+    showDialog(
+      context: context,
+      builder: (context) {
+        TextEditingController redefinicaoSenhaController =
+            TextEditingController(text: email);
+        return AlertDialog(
+            title: const Text("Confirme o e-mail para redefinição de senha!"),
+            content: TextFormField(
+              controller: redefinicaoSenhaController,
+              decoration:
+                  const InputDecoration(label: Text('Confirme o e-mail...')),
+            ),
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(32))),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    authService
+                        .redefinicaoSenha(
+                            email: redefinicaoSenhaController.text)
+                        .then((String? erro) {
+                      if (erro == null) {
+                        showSnackBar(
+                          context: context,
+                          mensagem: "E-mail de redefinição enviado!",
+                          isErro: false,
+                        );
+                      } else {
+                        showSnackBar(
+                          context: context,
+                          mensagem: erro,
+                        );
+                      }
+                      Navigator.pop(context);
+                    });
+                  },
+                  child: const Text('Redefinir senha'))
+            ]);
+      },
+    );
   }
 }
