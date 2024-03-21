@@ -17,7 +17,7 @@ class Busca extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.only(top: 15.0, left: 15.0, right: 15.0),
         child: Stack(children: [
           SizedBox(
             width: 400,
@@ -98,9 +98,12 @@ class Busca extends StatelessWidget {
                   color: Colors.black12),
               width: 100,
               height: 100,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(4),
-                  child: Image.asset(icone, fit: BoxFit.scaleDown))),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(4),
+                    child: Image.asset(icone, fit: BoxFit.scaleDown)),
+              )),
         ]));
   }
 }

@@ -31,10 +31,14 @@ showSenhaConfirmacaoDialog({
                 AuthService()
                     .removerConta(senha: senhaConfirmacaoController.text)
                     .then((String? erro) {
-                      if (erro == null) {
-                        Navigator.pop(context);
-                        Navigator.pop(context);
-                      }
+                  if (erro == null) {
+                    bool isInitialScreen(Route<dynamic> route) {
+                      return route.isFirst ||
+                          route.settings.name == '/initialScreen';
+                    }
+
+                    Navigator.of(context).popUntil(isInitialScreen);
+                  }
                 });
               },
               child: const Text("EXCLUIR CONTA"),

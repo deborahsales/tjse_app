@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../components/barra_inferior.dart';
+import '../components/barra_superior.dart';
 import '../data/tjse_dao.dart';
 import 'avancada_resultados_screen.dart';
 
@@ -23,23 +24,13 @@ class _AvanScreenState extends State<AvanScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(219, 238, 255, 1.0),
-      appBar: AppBar(
-        title: const Text(
-          'TJSE - Folhas de Pagamento',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: Colors.blue,
-        iconTheme: const IconThemeData(color: Colors.white),
-      ),
+      appBar: const BarraSuperior(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(top: 8, bottom: 8,),
               child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
@@ -62,16 +53,17 @@ class _AvanScreenState extends State<AvanScreen> {
                   )),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 8, bottom: 8,),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       color: Colors.white,
                     ),
                     height: 60,
-                    width: 170,
+                    width: 165,
                     child: Padding(
                       padding: const EdgeInsets.only(
                           left: 15, top: 8, bottom: 8, right: 8),
@@ -99,14 +91,14 @@ class _AvanScreenState extends State<AvanScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 8, bottom: 8,),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       color: Colors.white,
                     ),
                     height: 60,
-                    width: 170,
+                    width: 165,
                     child: Padding(
                       padding: const EdgeInsets.only(
                           left: 15, top: 8, bottom: 8, right: 8),
@@ -136,18 +128,17 @@ class _AvanScreenState extends State<AvanScreen> {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 8, bottom: 8,),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       color: Colors.white,
                     ),
                     height: 60,
-                    width: 170,
+                    width: 165,
                     child: Padding(
                       padding: const EdgeInsets.only(
                           left: 15, top: 8, bottom: 8, right: 8),
@@ -175,14 +166,14 @@ class _AvanScreenState extends State<AvanScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 8, bottom: 8,),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       color: Colors.white,
                     ),
                     height: 60,
-                    width: 170,
+                    width: 165,
                     child: Padding(
                       padding: const EdgeInsets.only(
                           left: 15, top: 8, bottom: 8, right: 8),
@@ -212,10 +203,10 @@ class _AvanScreenState extends State<AvanScreen> {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 8, bottom: 8,),
                   child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
@@ -238,7 +229,7 @@ class _AvanScreenState extends State<AvanScreen> {
                       )),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 8, bottom: 8,),
                   child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
@@ -261,7 +252,7 @@ class _AvanScreenState extends State<AvanScreen> {
                       )),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 8, bottom: 8,),
                   child: Container(
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,

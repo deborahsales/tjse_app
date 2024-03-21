@@ -51,70 +51,65 @@ class _ResultadoAvancadaScreenState extends State<ResultadoAvancadaScreen> {
         backgroundColor: Colors.blue,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child:
-            Expanded(
-              child: FutureBuilder<List<Resultado>>(
-                future: TJSEDao().getAvancada(widget.nome, widget.cargo, widget.lotacao, widget.ano, widget.mes, widget.min, widget.max),
-                builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  List<Resultado>? items = snapshot.data;
-                  switch (snapshot.connectionState) {
-                    case ConnectionState.none:
-                      return const Center(
-                          child: Column(
-                            children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
-                              padding: EdgeInsets.all(25.0),
-                              child: Text('Carregando',
-                                  style: TextStyle(fontSize: 20)),
-                            )],
-                          ));
-                    case ConnectionState.waiting:
-                      return const Center(
-                          child: Column(
-                            children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
-                              padding: EdgeInsets.all(25.0),
-                              child: Text('Carregando',
-                                  style: TextStyle(fontSize: 20)),
-                            )],
-                          ));
-                    case ConnectionState.active:
-                      return const Center(
-                          child: Column(
-                            children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
-                              padding: EdgeInsets.all(25.0),
-                              child: Text('Carregando',
-                                  style: TextStyle(fontSize: 20)),
-                            )],
-                          ));
-                    case ConnectionState.done:
-                      if (snapshot.hasData && items != null) {
-                        if (items.isNotEmpty) {
-                          return ListView.builder(
-                              itemCount: items.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                final Resultado resultado = items[index];
-                                return resultado;
-                              });
-                        }
-                        return const Center(
-                          child: Column(
-                            children: [
-                              Icon(Icons.error_outline, size: 128),
-                              Text('Não há nenhum resultado',
-                                  style: TextStyle(fontSize: 32))
-                            ],
-                          ),
-                        );
-                      }
-                      return const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('Erro ao carregar resultados',
-                            style: TextStyle(fontSize: 32)),
-                      );
-                  }
-                },
-              )),
+      body: FutureBuilder<List<Resultado>>(
+        future: TJSEDao().getAvancada(widget.nome, widget.cargo, widget.lotacao, widget.ano, widget.mes, widget.min, widget.max),
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          List<Resultado>? items = snapshot.data;
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              return const Center(
+                  child: Column(
+                    children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
+                      padding: EdgeInsets.all(25.0),
+                      child: Text('Carregando',
+                          style: TextStyle(fontSize: 20)),
+                    )],
+                  ));
+            case ConnectionState.waiting:
+              return const Center(
+                  child: Column(
+                    children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
+                      padding: EdgeInsets.all(25.0),
+                      child: Text('Carregando',
+                          style: TextStyle(fontSize: 20)),
+                    )],
+                  ));
+            case ConnectionState.active:
+              return const Center(
+                  child: Column(
+                    children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
+                      padding: EdgeInsets.all(25.0),
+                      child: Text('Carregando',
+                          style: TextStyle(fontSize: 20)),
+                    )],
+                  ));
+            case ConnectionState.done:
+              if (snapshot.hasData && items != null) {
+                if (items.isNotEmpty) {
+                  return ListView.builder(
+                      itemCount: items.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        final Resultado resultado = items[index];
+                        return resultado;
+                      });
+                }
+                return const Center(
+                  child: Column(
+                    children: [
+                      Icon(Icons.error_outline, size: 128),
+                      Text('Não há nenhum resultado',
+                          style: TextStyle(fontSize: 32))
+                    ],
+                  ),
+                );
+              }
+              return const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text('Erro ao carregar resultados',
+                    style: TextStyle(fontSize: 32)),
+              );
+          }
+        },
       ),
       bottomNavigationBar: const BarraInferior(),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resultados_tjse/resultados_tjse.dart';
 import '../components/barra_inferior.dart';
+import '../components/barra_superior.dart';
 import '../data/tjse_dao.dart';
 
 class FaixaSalarialScreen extends StatefulWidget {
@@ -28,26 +29,16 @@ class _FaixaSalarialScreenState extends State<FaixaSalarialScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(219, 238, 255, 1.0),
-      appBar: AppBar(
-        title: const Text(
-          'TJSE - Folhas de Pagamento',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: Colors.blue,
-        iconTheme: const IconThemeData(color: Colors.white),
-      ),
+      appBar: const BarraSuperior(),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(top: 8, bottom: 8,),
         child: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 8, bottom: 8,),
                   child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
@@ -70,7 +61,7 @@ class _FaixaSalarialScreenState extends State<FaixaSalarialScreen> {
                       )),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 8, bottom: 8,),
                   child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
@@ -93,7 +84,7 @@ class _FaixaSalarialScreenState extends State<FaixaSalarialScreen> {
                       )),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 8, bottom: 8,),
                   child: Container(
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,

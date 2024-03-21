@@ -43,10 +43,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Image.network(
-                      "https://github.com/deborahsales/tjse_app/blob/main/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?raw=true",
-                      height: 64,
-                    ),
+                    Image.asset('assets/images/logo.png', height: 64,),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(

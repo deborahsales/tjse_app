@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../authentication/services/auth_service.dart';
 import '../components/barra_inferior.dart';
+import '../components/barra_superior.dart';
 import '../components/perfil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -19,17 +20,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(219, 238, 255, 1.0),
-      appBar: AppBar(
-        title: const Text(
-          'TJSE - Folhas de Pagamento',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: Colors.blue,
-        iconTheme: const IconThemeData(color: Colors.white),
-      ),
+      appBar: const BarraSuperior(),
       body: ListView(children: [
         Perfil(AuthService().nomeUsuario(), context: context),
         Column(
@@ -39,8 +30,12 @@ class _PerfilScreenState extends State<PerfilScreen> {
               padding: const EdgeInsets.all(20),
               child: ElevatedButton(
                   onPressed: () {
+                    bool isInitialScreen(Route<dynamic> route) {
+                      return route.isFirst || route.settings.name == '/initialScreen';
+                    }
+
                     AuthService().deslogar();
-                    Navigator.pop(context);
+                    Navigator.of(context).popUntil(isInitialScreen);
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,

@@ -20,6 +20,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+        routes: {
+        '/initialScreen': (context) => const InitialScreen(),},
       title: 'TJSE - Folhas de Pagamento',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
