@@ -63,17 +63,24 @@ class _NotificacoesScreenState extends State<NotificacoesScreen> {
                 return const Center(
                   child: Column(
                     children: [
-                      Icon(Icons.error_outline, size: 128),
+                      Icon(Icons.error_outline, size: 110),
                       Text('Não há nenhuma notificação',
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 32))
+                          style: TextStyle(fontSize: 28))
                     ],
                   ),
                 );
               }
-              return const Text('Erro ao carregar notificações',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 32));
+              return const Center(
+                child: Column(
+                  children: [
+                    Icon(Icons.report_gmailerrorred, size: 110),
+                    Text('Erro ao carregar notificações',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 28)),
+                  ],
+                ),
+              );
           }
         },
       ),

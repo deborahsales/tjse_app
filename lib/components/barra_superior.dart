@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'constantes.dart';
 
 class BarraSuperior extends StatelessWidget implements PreferredSizeWidget{
   const BarraSuperior({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class BarraSuperior extends StatelessWidget implements PreferredSizeWidget{
           fontSize: 20,
         ),
       ),
-      backgroundColor: Colors.blue,
+      backgroundColor: myBlue,
       iconTheme: const IconThemeData(color: Colors.white),
     );
   }

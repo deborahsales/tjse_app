@@ -1,5 +1,6 @@
 import 'package:disp_moveis/authentication/components/show_snackbar.dart';
 import 'package:disp_moveis/authentication/services/auth_service.dart';
+import 'package:disp_moveis/components/constantes.dart';
 import 'package:flutter/material.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -228,7 +229,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         botaoEnviarClicado();
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
+                          backgroundColor: myBlue,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0))),
                       child: Text(

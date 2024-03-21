@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         '/initialScreen': (context) => const InitialScreen(),},
       title: 'TJSE - Folhas de Pagamento',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
         useMaterial3: true,
       ),
       home: const RoteadorTelas(),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:disp_moveis/screens/favoritos_screen.dart';
 import 'package:disp_moveis/screens/perfil_screen.dart';
 import 'package:disp_moveis/screens/notificacoes_screen.dart';
+import 'constantes.dart';
 
 class BarraInferior extends StatelessWidget {
   const BarraInferior({super.key});
@@ -9,7 +10,7 @@ class BarraInferior extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-        color: Colors.blue,
+        color: myBlue,
         height: 70,
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -25,7 +26,7 @@ class BarraInferior extends StatelessWidget {
             icon: const Icon(
               Icons.favorite,
               color: Colors.white,
-              size: 40,
+              size: 35,
             ),
           ),
           IconButton(
@@ -40,7 +41,7 @@ class BarraInferior extends StatelessWidget {
             icon: const Icon(
               Icons.notifications,
               color: Colors.white,
-              size: 40,
+              size: 35,
             ),
           ),
           IconButton(
@@ -55,7 +56,7 @@ class BarraInferior extends StatelessWidget {
             icon: const Icon(
               Icons.settings,
               color: Colors.white,
-              size: 40,
+              size: 35,
             ),
           ),
         ]));
