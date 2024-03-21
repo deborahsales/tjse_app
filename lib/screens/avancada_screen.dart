@@ -289,6 +289,12 @@ class _AvanScreenState extends State<AvanScreen> {
         ),
       ),
       bottomNavigationBar: const BarraInferior(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.white,
+        shape: const CircleBorder(),
+        child: const Icon(Icons.favorite_border, color: Colors.black, size: 30),
+      ),
     );
   }
 }

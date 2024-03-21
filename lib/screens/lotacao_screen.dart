@@ -109,19 +109,23 @@ class _LotacaoScreenState extends State<LotacaoScreen> {
                         return const Center(
                           child: Column(
                             children: [
-                              Icon(Icons.error_outline, size: 128),
+                              Icon(Icons.error_outline, size: 110),
                               Text('Não há nenhum resultado',
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 32))
+                                  style: TextStyle(fontSize: 28))
                             ],
                           ),
                         );
                       }
-                      return const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('Erro ao carregar resultados',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 32)),
+                      return const Center(
+                        child: Column(
+                          children: [
+                            Icon(Icons.report_gmailerrorred, size: 110),
+                            Text('Erro ao carregar resultados',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 28)),
+                          ],
+                        ),
                       );
                   }
                 },
@@ -130,6 +134,12 @@ class _LotacaoScreenState extends State<LotacaoScreen> {
         ),
       ),
       bottomNavigationBar: const BarraInferior(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.white,
+        shape: const CircleBorder(),
+        child: const Icon(Icons.favorite_border, color: Colors.black, size: 30),
+      ),
     );
   }
 }

@@ -15,12 +15,12 @@ class _NomeScreenState extends State<NomeScreen> {
   TextEditingController nameController = TextEditingController();
   bool _buscar = false;
 
-  void _atualizarBusca()
-  {
+  void _atualizarBusca() {
     setState(() {
       _buscar = true;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,10 @@ class _NomeScreenState extends State<NomeScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 8, bottom: 8,),
+              padding: const EdgeInsets.only(
+                top: 8,
+                bottom: 8,
+              ),
               child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
@@ -67,73 +70,105 @@ class _NomeScreenState extends State<NomeScreen> {
                       ])),
             ),
             Expanded(
-                child: _buscar ? FutureBuilder<List<Resultado>>(
-              future: TJSEDao().getNome(nameController.text),
-              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                List<Resultado>? items = snapshot.data;
-                switch (snapshot.connectionState) {
-                  case ConnectionState.none:
-                    return const Center(
-                        child: Column(
-                      children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
-                        padding: EdgeInsets.all(25.0),
-                        child: Text('Carregando',
-                            style: TextStyle(fontSize: 20)),
-                      )],
-                    ));
-                  case ConnectionState.waiting:
-                    return const Center(
-                        child: Column(
-                          children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
-                            padding: EdgeInsets.all(25.0),
-                            child: Text('Carregando',
-                                style: TextStyle(fontSize: 20)),
-                          )],
-                        ));
-                  case ConnectionState.active:
-                    return const Center(
-                        child: Column(
-                          children: [SizedBox(height: 40,), CircularProgressIndicator(), Padding(
-                            padding: EdgeInsets.all(25.0),
-                            child: Text('Carregando',
-                                style: TextStyle(fontSize: 20)),
-                          )],
-                        ));
-                  case ConnectionState.done:
-                    if (snapshot.hasData && items != null) {
-                      if (items.isNotEmpty) {
-                        return ListView.builder(
-                            itemCount: items.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              final Resultado resultado = items[index];
-                              return resultado;
-                            });
-                      }
-                      return const Center(
-                        child: Column(
-                          children: [
-                            Icon(Icons.error_outline, size: 128),
-                            Text('Não há nenhum resultado',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 32))
-                          ],
-                        ),
-                      );
-                    }
-                    return const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text('Erro ao carregar resultados',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 32)),
-                    );
-                }
-              },
-            ) : const SizedBox(),)
-
+              child: _buscar
+                  ? FutureBuilder<List<Resultado>>(
+                      future: TJSEDao().getNome(nameController.text),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<dynamic> snapshot) {
+                        List<Resultado>? items = snapshot.data;
+                        switch (snapshot.connectionState) {
+                          case ConnectionState.none:
+                            return const Center(
+                                child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 40,
+                                ),
+                                CircularProgressIndicator(),
+                                Padding(
+                                  padding: EdgeInsets.all(25.0),
+                                  child: Text('Carregando',
+                                      style: TextStyle(fontSize: 20)),
+                                )
+                              ],
+                            ));
+                          case ConnectionState.waiting:
+                            return const Center(
+                                child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 40,
+                                ),
+                                CircularProgressIndicator(),
+                                Padding(
+                                  padding: EdgeInsets.all(25.0),
+                                  child: Text('Carregando',
+                                      style: TextStyle(fontSize: 20)),
+                                )
+                              ],
+                            ));
+                          case ConnectionState.active:
+                            return const Center(
+                                child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 40,
+                                ),
+                                CircularProgressIndicator(),
+                                Padding(
+                                  padding: EdgeInsets.all(25.0),
+                                  child: Text('Carregando',
+                                      style: TextStyle(fontSize: 20)),
+                                )
+                              ],
+                            ));
+                          case ConnectionState.done:
+                            if (snapshot.hasData && items != null) {
+                              if (items.isNotEmpty) {
+                                return ListView.builder(
+                                    itemCount: items.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      final Resultado resultado = items[index];
+                                      return resultado;
+                                    });
+                              }
+                              return const Center(
+                                child: Column(
+                                  children: [
+                                    Icon(Icons.error_outline, size: 110),
+                                    Text('Não há nenhum resultado',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: 28))
+                                  ],
+                                ),
+                              );
+                            }
+                            return const Center(
+                              child: Column(
+                                children: [
+                                  Icon(Icons.report_gmailerrorred, size: 110),
+                                  Text('Erro ao carregar resultados',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(fontSize: 28)),
+                                ],
+                              ),
+                            );
+                        }
+                      },
+                    )
+                  : const SizedBox(),
+            )
           ],
         ),
       ),
       bottomNavigationBar: const BarraInferior(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.white,
+        shape: const CircleBorder(),
+        child: const Icon(Icons.favorite_border, color: Colors.black, size: 30),
+      ),
     );
   }
 }

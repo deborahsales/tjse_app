@@ -19,7 +19,7 @@
     </queries>
 
     <application
-        android:label="disp_moveis"
+        android:label="TJSE - Folhas"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
