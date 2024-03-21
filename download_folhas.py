@@ -4,7 +4,10 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import datetime
 
+ano_inicial = 2019
+ano_final = datetime.date.today().year
 
 meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
          'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
@@ -20,7 +23,7 @@ mes_select = Select(driver.find_element(By.ID, 'idmes'))
 ano_select = Select(driver.find_element(By.ID, 'idano'))
 
 # Loop para baixar os arquivos
-for ano in range (2019,2024):
+for ano in range (ano_inicial, ano_final):
     for mes in meses:
         
         mes_select.select_by_visible_text(mes)

@@ -25,9 +25,6 @@ INSERT_QUERY = f'''INSERT INTO tjse.folha (nome, cargo, lotacao, remun_paradigma
             imposto_renda, descontos, retencao, total_debitos, rend_liquido, remun_origem, diarias, ano, mes) VALUES 
             (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'''
 
-meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-         'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-
 def post(valor):
     try:
         with connection:
@@ -42,6 +39,9 @@ def post(valor):
     except Exception as e:
         print(f'Erro inesperado: {e}')
 
+
+meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+         'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 
 # Lista arquivos na pasta
 pasta = '.xlsx'
@@ -61,7 +61,11 @@ for i, arquivo in enumerate(arquivos):
     df['mes'] = meses[mes-1]
     
     # Lista de colunas a serem modificadas
-    colunas_para_modificar = ['Remuneração Paradigma', 'Vantagens Pessoais', 'Subsídio, Diferença de Subsídio, Função de Confiança ou Cargo em Comissão', 'Indenizações', 'Vantagens Eventuais', 'Gratificações', 'Total de Créditos', 'Previdência Pública', 'Imposto de Renda', 'Descontos Diversos', 'Retenção por Teto constitucional', 'Total de débitos', 'Rendimento Líquido', 'Remuneração do Órgão de origem', 'Diárias']
+    colunas_para_modificar = ['Remuneração Paradigma', 'Vantagens Pessoais', 'Subsídio, Diferença de Subsídio',
+                              'Função de Confiança ou Cargo em Comissão', 'Indenizações', 'Vantagens Eventuais',
+                              'Gratificações', 'Total de Créditos', 'Previdência Pública', 'Imposto de Renda',
+                              'Descontos Diversos', 'Retenção por Teto constitucional', 'Total de débitos',
+                              'Rendimento Líquido', 'Remuneração do Órgão de origem', 'Diárias']
 
     # Corrige a formatação dos valores
     for coluna in colunas_para_modificar:
