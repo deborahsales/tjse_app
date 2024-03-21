@@ -11,7 +11,8 @@ class BarraInferior extends StatelessWidget {
     return BottomAppBar(
         color: Colors.blue,
         height: 70,
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center, children: [
           IconButton(
             onPressed: () {
               Navigator.push(

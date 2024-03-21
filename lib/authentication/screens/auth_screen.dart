@@ -232,7 +232,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0))),
                       child: Text(
-                        (isEntrando) ? "LOGIN" : "CADASTRAR",
+                        (isEntrando) ? "Login" : "Cadastrar",
                         style:
                             const TextStyle(fontSize: 18, color: Colors.white),
                       ),

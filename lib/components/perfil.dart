@@ -63,6 +63,7 @@ class _PerfilState extends State<Perfil> {
                       icon: const Icon(
                         Icons.delete,
                         color: Colors.red,
+                        size: 30,
                       ))
                 ],
               ),

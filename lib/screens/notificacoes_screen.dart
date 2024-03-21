@@ -65,12 +65,14 @@ class _NotificacoesScreenState extends State<NotificacoesScreen> {
                     children: [
                       Icon(Icons.error_outline, size: 128),
                       Text('Não há nenhuma notificação',
+                          textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 32))
                     ],
                   ),
                 );
               }
               return const Text('Erro ao carregar notificações',
+                  textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 32));
           }
         },

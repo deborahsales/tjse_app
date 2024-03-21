@@ -111,6 +111,7 @@ class _LotacaoScreenState extends State<LotacaoScreen> {
                             children: [
                               Icon(Icons.error_outline, size: 128),
                               Text('Não há nenhum resultado',
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(fontSize: 32))
                             ],
                           ),
@@ -119,6 +120,7 @@ class _LotacaoScreenState extends State<LotacaoScreen> {
                       return const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Text('Erro ao carregar resultados',
+                            textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 32)),
                       );
                   }
