@@ -58,7 +58,7 @@ class _PerfilState extends State<Perfil> {
                   ),
                   IconButton(
                       onPressed: () {
-                        showSenhaConfirmacaoDialog(context: context, email: '');
+                        showSenhaConfirmacaoDialog(context: context);
                       },
                       icon: const Icon(
                         Icons.delete,

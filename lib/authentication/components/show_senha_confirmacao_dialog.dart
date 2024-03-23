@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 showSenhaConfirmacaoDialog({
   required BuildContext context,
-  required String email,
 }) {
   showDialog(
       context: context,
@@ -11,7 +10,7 @@ showSenhaConfirmacaoDialog({
         TextEditingController senhaConfirmacaoController =
             TextEditingController();
         return AlertDialog(
-          title: Text("Deseja remover a conta com o e-mail $email ?"),
+          title: const Text("Deseja excluir a sua conta?"),
           content: SizedBox(
             height: 175,
             child: Column(
