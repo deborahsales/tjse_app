@@ -23,7 +23,7 @@ mes_select = Select(driver.find_element(By.ID, 'idmes'))
 ano_select = Select(driver.find_element(By.ID, 'idano'))
 
 # Loop para baixar os arquivos
-for ano in range (ano_inicial, ano_final):
+for ano in range (ano_inicial, ano_final+1):
     for mes in meses:
         
         mes_select.select_by_visible_text(mes)
